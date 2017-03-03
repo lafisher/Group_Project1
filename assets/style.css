@@ -1,0 +1,20 @@
+.jumbotron {
+	font-size: 65px;
+	line-height: 20px;
+	text-align: center;
+	color: #a22678;
+	font-style: impact, fantasy;
+	height: 200px;
+	background-color:  #022454;
+	padding: 20px 0px 20px 0px; 
+}
+
+.col-lg-6{
+	text-align: center;
+
+}
+
+.col-lg-12{
+	text-align: center;
+
+}
