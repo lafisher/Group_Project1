@@ -13,7 +13,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var database = firebae.database();
+var database = firebase.database();
 
 var loggedDate = "";		//<---variables for diary/tabel
 var loggedMood = "";
