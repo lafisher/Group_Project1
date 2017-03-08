@@ -1,3 +1,11 @@
+$("#addMoodButton").on("click", function(){
+	event.preventDefault();
+	var mood = "";
+	giphy(mood);
+	apiCall(mood);
+});
+
+
 // firebase initialize for table database
 var config = {
     apiKey: "AIzaSyC8qOlu41DAJ_qJEKOhOQ95XcD9JRXWLbY",
@@ -19,8 +27,10 @@ console.log(moment(currentDateTime).format("MM/DD/YYYY"));
 
 
 
-//Giphy ajax call for mood
-var mood = "excited";
+
+//Giphy function 
+function giphy(mood){
+// var mood = "excited";
 var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=1";
 
 $.ajax({                     
@@ -33,6 +43,6 @@ $.ajax({
 		var moodGif = $("<img>");
 		moodGif.attr("src", results[0].images.fixed_height.url);
 		$("#gifDiv").append(moodGif);
-
+};
 
 });
