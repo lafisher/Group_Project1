@@ -17,39 +17,42 @@
 	integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
 	crossorigin="anonymous"></script>
 	<script type="text/javascript" src="javascript/moment.js"></script>
+	<!--bootflat the new css framework-->
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<script src="https://bootflat.github.io/bootflat/js/icheck.min.js"></script>
+    <script src="https://bootflat.github.io/bootflat/js/jquery.fs.selecter.min.js"></script>
+    <script src="https://bootflat.github.io/bootflat/js/jquery.fs.stepper.min.js"></script>
+    <link rel="stylesheet" href="https://bootflat.github.io/bootflat/css/bootflat.css">
 	<link rel="stylesheet" type="text/css" href="assets/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     
 </head>
-
-<div class="jumbotron">
-	<div class="dropdown">
-	  <button class="btn btn-danger dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Today's Mood
-	  	<span class="caret"></span></button>
-	  		<ul class="dropdown-menu">
-	    		<li><a href="#">Happy</a></li>
-	    		<li><a href="#">Sad</a></li>
-	    		<li><a href="#">Mad</a></li>
-	    		<li><a href="#">Excited</a></li>
-	    		<li><a href="#">Tired</a></li>
-	  		</ul>
-	</div>
-  	<h1 class="display-3"> Hooked on a Feeling </h1>
+<div class = "main-container"> 
+	<div class="jumbotron">
+		<div class="dropdown">
+		  <button class="btn btn-info dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Today's Mood
+		  	<span class="caret"></span></button>
+		  		<ul class="dropdown-menu">
+		    		<li><a href="#">Happy</a></li>
+		    		<li><a href="#">Sad</a></li>
+		    		<li><a href="#">Mad</a></li>
+		    		<li><a href="#">Excited</a></li>
+		    		<li><a href="#">Tired</a></li>
+		  		</ul>
+		</div>
+  	<h1 id = "really"> Hooked on a Feeling </h1>
   	<div class="form-group row">
   		<label for="example-month-input" class="col-2 col-form-label"></label>
   		<div class="col-md-2">
     		<input class="form-control" type="date" id="example-date-input">
   		</div>
 	</div>
-  	<button type="submit" class="btn btn-danger" id="addMoodButton">Update Mood</button></p>
+  	<button type="submit" class="btn btn-info" id="addMoodButton">Update Mood</button></p>
         
   	<p></p>
 
 
 </div>
-
-
-<div class = "main-container"> </div>
 
 	<div class = "row"> 
 		<div class = "col-lg-6" id = gifDiv>
@@ -66,7 +69,7 @@
 		</div>
 	</div>
 
-	<div class="panel panel-danger">
+	<div class="panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title"><strong>Mood History</strong></h3>
 				</div>
@@ -86,7 +89,7 @@
 				</div>
 			</div>
 
-
+</div>
 
 
 
