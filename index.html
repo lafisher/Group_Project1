@@ -7,6 +7,13 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!--materialize-->
+	<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+          
 	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/moment.js"></script>
@@ -24,6 +31,7 @@
 
 
 <div class = "main-container"> </div>
+<a class="waves-effect waves-light btn"> <i class="material-icons right">cloud</i>button</a>
 
 	<div class = "row"> 
 		<div class = "col-lg-6">
@@ -40,6 +48,26 @@
 		test 3
 		</div>
 	</div>
+
+	<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title"><strong>Mood History</strong></h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-hover" id='moodTable'>
+						<thead>
+							<tr>
+								<th>Day</th>
+								<th>Mood</th>
+								<th>YouTube Link</th>								
+						</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
 
 
 
