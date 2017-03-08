@@ -25,10 +25,6 @@ var loggedVidLink = "";
 var currentDateTime = moment(); //<--varibale for posting current date-time in various places on site
 console.log(moment(currentDateTime).format("MM/DD/YYYY"));
 
-
-
-
-
 //Giphy function 
 function giphy(mood){
 // var mood = "excited";
@@ -44,7 +40,20 @@ $.ajax({
 		var moodGif = $("<img>");
 		moodGif.attr("src", results[0].images.fixed_height.url);
 		$("#gifDiv").append(moodGif);
-});
+    });
+}
+	$.ajax({                     
+	        url: queryURL,
+	        method: "GET"
+	    })
+	    .done(function(response) { 
+	        var results = response.data;
+	        console.log(response.data)
+			var moodGif = $("<img>");
+			moodGif.attr("src", results[0].images.fixed_height.url);
+			$("#gifDiv").append(moodGif);
+	});
+
 }
 
 
