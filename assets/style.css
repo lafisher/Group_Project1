@@ -1,20 +1,49 @@
 .jumbotron {
 	font-size: 65px;
-	line-height: 20px;
+	line-height: 60px;
 	text-align: center;
 	color: #a22678;
 	font-style: impact, fantasy;
-	height: 200px;
-	background-color:  #022454;
+	height: 250px;
+	background-color: #330252;
 	padding: 20px 0px 20px 0px; 
+}
+.dropdown-toggle{
+	float: left;
+}
+.col-md-2{float: right;
 }
 
 .col-lg-6{
+	
 	text-align: center;
-
+	height: 400px;
+	width: 640px;
 }
-
+#gifDiv{
+	float: left;
+	background-color: white;
+	margin: 0px 0px 20px 30px;
+}
+#vidDiv{
+	float: right;
+	background-color: white;
+	margin: 0px 30px 20px 0px;
+}
 .col-lg-12{
 	text-align: center;
+	clear: both;
+}
+body {
+	background-image: url("../images/tripout.jpg");
+	background-repeat: no-repeat;
+	background-size:cover;
 
 }
+
+.panel-danger, .panel-body{
+	text-align: center;
+}
+
+
+
