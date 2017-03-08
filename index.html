@@ -10,7 +10,12 @@
 	<!--materialize-->
           
 	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.js"
+	integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+	crossorigin="anonymous"></script>
 	<script type="text/javascript" src="javascript/moment.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
@@ -19,7 +24,7 @@
 
 <div class="jumbotron">
 	<div class="dropdown">
-	  <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Today's Mood
+	  <button class="btn btn-danger dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Today's Mood
 	  	<span class="caret"></span></button>
 	  		<ul class="dropdown-menu">
 	    		<li><a href="#">Happy</a></li>

@@ -1,8 +1,16 @@
+
+$('.dropdown-menu li a').on('click', function(){
+    $('#currentMood').val($(this).text());
+    console.log(($(this).text()));
+    $('#currentMood').html("Today's Mood: " + ($(this).text()));
+});
+
 $("#addMoodButton").on("click", function(){
-	event.preventDefault();
-	var mood = "";
-	giphy(mood);
-	apiCall(mood);
+    event.preventDefault();
+    var mood = $('#currentMood').val();
+    console.log(mood);
+    giphy(mood);
+    apiCall(mood);
 });
 
 
@@ -27,7 +35,6 @@ console.log(moment(currentDateTime).format("MM/DD/YYYY"));
 
 //Giphy function 
 function giphy(mood){
-// var mood = "excited";
 var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=1";
 
 $.ajax({                     
