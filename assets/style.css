@@ -3,7 +3,7 @@
 	font-size: 65px;
 	text-align: center;
 	height: 250px;
-	background-color: #044F67;
+	background-color: #552d81;
 	padding: 20px 0px 20px 0px; 
 }
 #really{
@@ -14,6 +14,9 @@
 	float: left;
 	margin: 0px 0px 0px 30px;
 
+}
+#currentMood{
+	background-color: #330252;
 }
 
 .col-md-2{float: left;
@@ -40,12 +43,15 @@
 	clear: both;
 }
 body {
-	background-image: url("../images/sadness.jpeg");
+	background-image: url("../images/Inside-Out.jpg");
 	
 }
 
-.panel-info, .panel-body{
+#panelHead, .panel-body{
 	text-align: center;
+}
+#addMoodButton {
+	background-color: #330252;
 }
 
 /***********************Shawn's Code***********************/
