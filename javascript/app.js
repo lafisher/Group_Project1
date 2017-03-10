@@ -35,7 +35,7 @@ var config = {
 
 
 // function to push data to firebase
-function firebaseMood(mood){
+function firebaseMood(mood, url){
 
     var database = firebase.database();
 
@@ -43,9 +43,9 @@ function firebaseMood(mood){
     var loggedMood = "";
     var loggedVidLink = "";
 
-    loggedDate = mood;
+    loggedDate = $("#date-input").val().trim();
     loggedMood = mood;
-    loggedVidLink = mood;
+    loggedVidLink = url;
 
     database.ref().push({
         loggedDate: loggedDate,
@@ -78,7 +78,7 @@ function firebaseMood(mood){
 
 
 function giphy(mood){
-var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
 
 $.ajax({                     
         url: queryURL,
@@ -99,7 +99,7 @@ $.ajax({
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
 //used to call youtube API to grab video IDs based on playlist ID
-function apiCall(playlistId) {
+function apiCall(mood, playlistId) {
 
     var videoIdArray = []; //Array to hold each video ID
     var playlistId = 'PLhGO2bt0EkwvRUioaJMLxrMNhU44lRWg8'; //this value will be provided based on the emotion chosen
@@ -119,7 +119,7 @@ function apiCall(playlistId) {
         var randomNum = Math.floor(Math.random() * videoIdArray.length); //random number to grab a random video id from the array
 
         //call displayVideo function with a random video id
-        displayVideo(videoIdArray[randomNum]);
+        displayVideo(mood, videoIdArray[randomNum]);
         console.log(videoIdArray);
 
     });
@@ -135,12 +135,7 @@ function displayVideo(mood, vidId) {
     var url = 'https://www.youtube.com/embed/' + vidId;
     iframe.attr("src", url);
     $('#vidDiv').html(iframe);
-
-    console.log(url);
-
-    // firebaseMood(mood, url);
-
-    // return url;
+    firebaseMood(mood, url);
 
     //640 width - 390 height for iframe element
 }
