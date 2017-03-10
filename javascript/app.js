@@ -11,9 +11,9 @@ $("#addMoodButton").on("click", function(){
     var validDate = moment($('#date-input').val().trim(), 'MM/DD/YYYY',true).isValid();
 
     if (validDate) {
-        $('.alert-danger').hide()
+        $('.alert-danger').hide();
         var mood = $('#currentMood').val();
-        console.log(mood)
+        console.log(mood);
         giphy(mood);
         apiCall(mood);
     } else {
@@ -90,14 +90,20 @@ function apiCall(playlistId) {
 }
 
 //function to be called to display a random video from the array of playlist ids pulled from YouTube API
-function displayVideo(vidId) {
+function displayVideo(mood, vidId) {
     //iframe html element to hold youtube video
     var iframe = $('<iframe>');
     iframe.attr('id', 'youtube-frame');
     //URL to be used to display the specifc video
-    url = 'https://www.youtube.com/embed/' + vidId;
+    var url = 'https://www.youtube.com/embed/' + vidId;
     iframe.attr("src", url);
     $('#vidDiv').html(iframe);
+
+    console.log(url);
+
+    // firebaseMood(mood, url);
+
+    // return url;
 
     //640 width - 390 height for iframe element
 }
