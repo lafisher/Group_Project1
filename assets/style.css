@@ -47,12 +47,17 @@ body {
 	
 }
 
-#panelHead, .panel-body{
+.panel-heading{
+	text-align: center;
+	background-color: #552d81;
+}
+.panel-body {
 	text-align: center;
 }
 #addMoodButton {
 	background-color: #330252;
 }
+
 
 /***********************Shawn's Code***********************/
 
