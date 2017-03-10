@@ -29,26 +29,33 @@
 </head>
 <div class = "main-container"> 
 	<div class="jumbotron">
-		<div class="dropdown">
-		  <button class="btn btn-info dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Today's Mood
-		  	<span class="caret"></span></button>
-		  		<ul class="dropdown-menu">
-		    		<li><a href="#">Happy</a></li>
-		    		<li><a href="#">Sad</a></li>
-		    		<li><a href="#">Mad</a></li>
-		    		<li><a href="#">Excited</a></li>
-		    		<li><a href="#">Tired</a></li>
-		  		</ul>
-		</div>
-  	<h1 id = "really"> Hooked on a Feeling </h1>
-  	<div class="form-group row">
-  		<label for="example-month-input" class="col-2 col-form-label"></label>
-  		<div class="col-md-2">
-    		<input class="form-control" type="date" id="example-date-input">
-  		</div>
+		<div class = "row" id = header1>
+			<div class="dropdown">
+			  <button class="btn btn-info dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Today's Mood
+			  	<span class="caret"></span></button>
+			  		<ul class="dropdown-menu">
+			    		<li><a href="#">Happy</a></li>
+			    		<li><a href="#">Sad</a></li>
+			    		<li><a href="#">Mad</a></li>
+			    		<li><a href="#">Excited</a></li>
+			    		<li><a href="#">Tired</a></li>
+			  		</ul>
+			</div>
+	<div class="form-group row">
+  			<label for="example-month-input" class="col-2 col-form-label"></label>
+  				<div class="col-md-2">
+    				<input class="form-control" id="date-input">
+  				</div>
 	</div>
+		</div>
+	<div class = "row" id = header2>
+  		<h1 id = "really"> Hooked on a Feeling </h1>
+  	</div>	
+
+<div class = "row" id = header3>
+  
   	<button type="submit" class="btn btn-info" id="addMoodButton">Update Mood</button></p>
-        
+</div>        
   	<p></p>
 
 

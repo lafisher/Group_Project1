@@ -16,7 +16,7 @@
 
 }
 
-.col-md-2{float: right;
+.col-md-2{float: left;
 	
 }
 .col-lg-6{
@@ -27,12 +27,12 @@
 }
 #gifDiv{
 	float: left;
-	background-color: white;
+	background-color: transparent;
 	margin: 0px 0px 20px 30px;
 }
 #vidDiv{
 	float: right;
-	background-color: white;
+	background-color: transparent;
 	margin: 0px 30px 20px 0px;
 }
 .col-lg-12{
