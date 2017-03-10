@@ -12,61 +12,65 @@ $("#addMoodButton").on("click", function(){
     giphy(mood);
     apiCall(mood);
     firebaseMood(mood);
+    var commitURL = displayVideo();
+    console.log(commitURL);
 });
 
-
 // firebase initialize for table database
-// function firebaseMood(mood){
+var config = {
+        apiKey: "AIzaSyC8qOlu41DAJ_qJEKOhOQ95XcD9JRXWLbY",
+        authDomain: "gp1-hookedonafeeling.firebaseapp.com",
+        databaseURL: "https://gp1-hookedonafeeling.firebaseio.com",
+        storageBucket: "gp1-hookedonafeeling.appspot.com",
+        messagingSenderId: "236483189922"
+    };
 
-//     var config = {
-//         apiKey: "AIzaSyC8qOlu41DAJ_qJEKOhOQ95XcD9JRXWLbY",
-//         authDomain: "gp1-hookedonafeeling.firebaseapp.com",
-//         databaseURL: "https://gp1-hookedonafeeling.firebaseio.com",
-//         storageBucket: "gp1-hookedonafeeling.appspot.com",
-//         messagingSenderId: "236483189922"
-//     };
+    firebase.initializeApp(config);
 
-//     firebase.initializeApp(config);
 
-//     var database = firebase.database();
+// function to push data to firebase
+function firebaseMood(mood){
 
-//     var loggedDate = "";		                //<---variables for diary/tabel
-//     var loggedMood = "";
-//     var loggedVidLink = "";
-//     // var currentDateTime = moment();          //<--varibale for posting current date-time in various places on site
-//     // console.log(moment(currentDateTime).format("MM/DD/YYYY"));
+    var database = firebase.database();
 
-//     event.preventDefault();
-//     loggedDate = $("#date-input").val().trim();
-//     loggedMood = mood;
-//     console.log(mood);
-//     loggedVidLink = ;               //<--need vid url
+    var loggedDate = "";		               
+    var loggedMood = "";
+    var loggedVidLink = "";
 
-//     database.ref().push({
-//         loggedDate: loggedDate,
-//         loggedMood: loggedMood,
-//         loggedVidLink:              //<--need vid url
-//     });
+    loggedDate = mood;
+    loggedMood = mood;
+    loggedVidLink = mood;
 
-//     database.ref().on("child_added", function(childSnapShot){
-//         var tblRow = $('<tr>');
+    database.ref().push({
+        loggedDate: loggedDate,
+        loggedMood: loggedMood,
+        loggedVidLink: loggedVidLink
+    });
+
+    database.ref().on("child_added", function(childSnapShot){
+        var tblRow = $('<tr>');
        
-//         tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
-//         tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
-//         tblRow.append('<td>' + childSnapShot.val().loggedVidLink + '<td>');
+        tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
+        tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
+        tblRow.append('<td>' + childSnapShot.val().loggedVidLink + '<td>');
         
-//         $("#moodTable").append(tblRow);
+        $("#moodTable").append(tblRow);
     
-//     }, function(errorObj){
-//         console.log("Error: " + errorObj.code);
-//     });
+    }, function(errorObj){
+        console.log("Error: " + errorObj.code);
+    });
 
-// };
+};
 
 
 
 
 //Giphy function 
+
+
+
+
+
 function giphy(mood){
 var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
 
@@ -122,9 +126,11 @@ function displayVideo(vidId) {
     var iframe = $('<iframe>');
     iframe.attr('id', 'youtube-frame');
     //URL to be used to display the specifc video
-    url = 'https://www.youtube.com/embed/' + vidId;
+    var url = 'https://www.youtube.com/embed/' + vidId;
+   var  finalUrl = url;
     iframe.attr("src", url);
     $('#vidDiv').append(iframe);
+    return finalUrl;
 
     //640 width - 390 height for iframe element
 }
