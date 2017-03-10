@@ -48,5 +48,11 @@ body {
 	text-align: center;
 }
 
+/***********************Shawn's Code***********************/
 
+iframe {
+	width: 640px;
+	height: 390px;
+	padding: 10px;
+}
 

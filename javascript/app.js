@@ -88,7 +88,7 @@ function displayVideo(vidId) {
     //URL to be used to display the specifc video
     url = 'https://www.youtube.com/embed/' + vidId;
     iframe.attr("src", url);
-    $('#vidDiv').append(iframe);
+    $('#vidDiv').html(iframe);
 
     //640 width - 390 height for iframe element
 }
@@ -96,13 +96,22 @@ function displayVideo(vidId) {
 //function to take mood variable to determine playlist to send to API
 function generatePlaylistId(mood) {
     var playlistId;
-    if (mood = 'excited') {
-        playlistId = "";
+    if (mood == 'happy') {
+        playlistId = '';
+    } else if (mood =='sad') {
+        playlistId = '';
+    } else if (mood == 'mad') {
+        playlistId = '';
+    } else if (mood == 'excited') {
+        playlistId = '';
+    } else {
+        playlistId = '';
     }
 
     apiCall(playlistId);
 }
 
+//moment date validation example : moment(date-input.val().trim(), 'MM/DD/YYYY',true).isValid());
 //response.items[i].snippet.resourceId.videoId  <- thatll give us the vidId for each of the 5 songs
 // api reference to get playlistitems from playlistId:
 // https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLhGO2bt0EkwvRUioaJMLxrMNhU44lRWg8&key=AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU
