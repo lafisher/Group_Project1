@@ -11,31 +11,64 @@ $("#addMoodButton").on("click", function(){
     console.log(mood);
     giphy(mood);
     apiCall(mood);
+    firebaseMood(mood);
 });
 
 
 // firebase initialize for table database
-var config = {
-    apiKey: "AIzaSyC8qOlu41DAJ_qJEKOhOQ95XcD9JRXWLbY",
-    authDomain: "gp1-hookedonafeeling.firebaseapp.com",
-    databaseURL: "https://gp1-hookedonafeeling.firebaseio.com",
-    storageBucket: "gp1-hookedonafeeling.appspot.com",
-    messagingSenderId: "236483189922"
-};
+// function firebaseMood(mood){
 
-firebase.initializeApp(config);
+//     var config = {
+//         apiKey: "AIzaSyC8qOlu41DAJ_qJEKOhOQ95XcD9JRXWLbY",
+//         authDomain: "gp1-hookedonafeeling.firebaseapp.com",
+//         databaseURL: "https://gp1-hookedonafeeling.firebaseio.com",
+//         storageBucket: "gp1-hookedonafeeling.appspot.com",
+//         messagingSenderId: "236483189922"
+//     };
 
-var database = firebase.database();
+//     firebase.initializeApp(config);
 
-var loggedDate = "";		//<---variables for diary/tabel
-var loggedMood = "";
-var loggedVidLink = "";
-var currentDateTime = moment(); //<--varibale for posting current date-time in various places on site
-console.log(moment(currentDateTime).format("MM/DD/YYYY"));
+//     var database = firebase.database();
+
+//     var loggedDate = "";		                //<---variables for diary/tabel
+//     var loggedMood = "";
+//     var loggedVidLink = "";
+//     // var currentDateTime = moment();          //<--varibale for posting current date-time in various places on site
+//     // console.log(moment(currentDateTime).format("MM/DD/YYYY"));
+
+//     event.preventDefault();
+//     loggedDate = $("#date-input").val().trim();
+//     loggedMood = mood;
+//     console.log(mood);
+//     loggedVidLink = ;               //<--need vid url
+
+//     database.ref().push({
+//         loggedDate: loggedDate,
+//         loggedMood: loggedMood,
+//         loggedVidLink:              //<--need vid url
+//     });
+
+//     database.ref().on("child_added", function(childSnapShot){
+//         var tblRow = $('<tr>');
+       
+//         tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
+//         tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
+//         tblRow.append('<td>' + childSnapShot.val().loggedVidLink + '<td>');
+        
+//         $("#moodTable").append(tblRow);
+    
+//     }, function(errorObj){
+//         console.log("Error: " + errorObj.code);
+//     });
+
+// };
+
+
+
 
 //Giphy function 
 function giphy(mood){
-var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=1";
+var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
 
 $.ajax({                     
         url: queryURL,
@@ -44,12 +77,15 @@ $.ajax({
     .done(function(response) { 
         var results = response.data;
         console.log(response.data)
-		var moodGif = $("<img>");
-		moodGif.attr("src", results[0].images.fixed_height.url);
-		$("#gifDiv").append(moodGif);
+        // for (var i = 0; i < response.data.length; i++){
+         var moodGif = $("<img>");
+         moodGif.attr("src", results[0].images.original.url);
+         moodGif.attr("width", "640");
+         moodGif.attr("height", "390");
+         $("#gifDiv").html(moodGif);   
+        // };
     });
 }
-
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
 //used to call youtube API to grab video IDs based on playlist ID
