@@ -56,3 +56,11 @@ iframe {
 	padding: 10px;
 }
 
+.alert-danger {
+	font-size: 11pt;
+    text-align: left;
+    height: 35px;
+    padding: 11px;
+    display: none;
+}
+
