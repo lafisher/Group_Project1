@@ -1,3 +1,15 @@
+// firebase initialize for table database
+var config = {
+        apiKey: "AIzaSyC8qOlu41DAJ_qJEKOhOQ95XcD9JRXWLbY",
+        authDomain: "gp1-hookedonafeeling.firebaseapp.com",
+        databaseURL: "https://gp1-hookedonafeeling.firebaseio.com",
+        storageBucket: "gp1-hookedonafeeling.appspot.com",
+        messagingSenderId: "236483189922"
+    };
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
 
 $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
@@ -15,28 +27,28 @@ $("#addMoodButton").on("click", function(){
         var mood = $('#currentMood').val();
         console.log(mood);
         giphy(mood);
-        apiCall(mood);
+        displayVideo(mood);
     } else {
         $('.alert-danger').show()
         $('#date-input').val('');
     }
 });
 
-// firebase initialize for table database
-var config = {
-        apiKey: "AIzaSyC8qOlu41DAJ_qJEKOhOQ95XcD9JRXWLbY",
-        authDomain: "gp1-hookedonafeeling.firebaseapp.com",
-        databaseURL: "https://gp1-hookedonafeeling.firebaseio.com",
-        storageBucket: "gp1-hookedonafeeling.appspot.com",
-        messagingSenderId: "236483189922"
-    };
+database.ref().on("child_added", function(childSnapShot){
+    var tblRow = $('<tr>');
+   
+    tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
+    tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
+    tblRow.append('<td>' + childSnapShot.val().loggedVidLink + '</td>');
+    
+    $("#moodTable").append(tblRow);
 
-    firebase.initializeApp(config);
+}, function(errorObj){
+    console.log("Error: " + errorObj.code);
+});
 
 // function to push data to firebase
 function firebaseMood(mood, url){
-
-    var database = firebase.database();
 
     var loggedDate = "";		               
     var loggedMood = "";
@@ -50,19 +62,6 @@ function firebaseMood(mood, url){
         loggedDate: loggedDate,
         loggedMood: loggedMood,
         loggedVidLink: loggedVidLink
-    });
-
-    database.ref().on("child_added", function(childSnapShot){
-        var tblRow = $('<tr>');
-       
-        tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
-        tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
-        tblRow.append('<td>' + childSnapShot.val().loggedVidLink + '<td>');
-        
-        $("#moodTable").append(tblRow);
-    
-    }, function(errorObj){
-        console.log("Error: " + errorObj.code);
     });
 
 };
@@ -89,8 +88,8 @@ $.ajax({
 }
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
-//used to call youtube API to grab video IDs based on playlist ID
-function apiCall(mood, playlistId) {
+//used to call youtube API to grab video IDs based on playlist ID and display on page
+function displayVideo(mood, playlistId) {
 
     var videoIdArray = []; //Array to hold each video ID
     var playlistId = 'PLhGO2bt0EkwvRUioaJMLxrMNhU44lRWg8'; //this value will be provided based on the emotion chosen
@@ -110,26 +109,33 @@ function apiCall(mood, playlistId) {
         var randomNum = Math.floor(Math.random() * videoIdArray.length); //random number to grab a random video id from the array
 
         //call displayVideo function with a random video id
-        displayVideo(mood, videoIdArray[randomNum]);
+        videoId = videoIdArray[randomNum];
         console.log(videoIdArray);
 
-    });
+        //iframe html element to hold youtube video
+        var iframe = $('<iframe>');
+        iframe.attr('id', 'youtube-frame');
+        //URL to be used to display the specifc video
+        var url = 'https://www.youtube.com/embed/' + videoId;
+        iframe.attr("src", url);
+        $('#vidDiv').html(iframe);
 
+        firebaseMood(mood, url);
+
+    });
 }
 
 //function to be called to display a random video from the array of playlist ids pulled from YouTube API
-function displayVideo(mood, vidId) {
-    //iframe html element to hold youtube video
-    var iframe = $('<iframe>');
-    iframe.attr('id', 'youtube-frame');
-    //URL to be used to display the specifc video
-    var url = 'https://www.youtube.com/embed/' + vidId;
-    iframe.attr("src", url);
-    $('#vidDiv').html(iframe);
-    firebaseMood(mood, url);
-
-    //640 width - 390 height for iframe element
-}
+// function displayVideo(mood, vidId) {
+//     //iframe html element to hold youtube video
+//     var iframe = $('<iframe>');
+//     iframe.attr('id', 'youtube-frame');
+//     //URL to be used to display the specifc video
+//     var url = 'https://www.youtube.com/embed/' + vidId;
+//     iframe.attr("src", url);
+//     $('#vidDiv').html(iframe);
+//     firebaseMood(mood, url);
+// }
 
 //function to take mood variable to determine playlist to send to API
 function generatePlaylistId(mood) {

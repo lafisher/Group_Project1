@@ -58,6 +58,10 @@ body {
 	background-color: #330252;
 }
 
+th {
+	text-align: center;
+	font-weight: bold;
+}
 
 /***********************Shawn's Code***********************/
 
