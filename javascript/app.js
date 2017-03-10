@@ -112,6 +112,7 @@ function generatePlaylistId(mood) {
 }
 
 //moment date validation example : moment(date-input.val().trim(), 'MM/DD/YYYY',true).isValid());
+// <div class="alert alert-danger" role="alert">...</div> use to show invalid date
 //response.items[i].snippet.resourceId.videoId  <- thatll give us the vidId for each of the 5 songs
 // api reference to get playlistitems from playlistId:
 // https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLhGO2bt0EkwvRUioaJMLxrMNhU44lRWg8&key=AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU
