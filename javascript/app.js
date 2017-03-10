@@ -7,6 +7,7 @@ $('.dropdown-menu li a').on('click', function(){
 
 $("#addMoodButton").on("click", function(){
     event.preventDefault();
+
     var mood = $('#currentMood').val();
     console.log(mood);
     giphy(mood);
@@ -14,6 +15,19 @@ $("#addMoodButton").on("click", function(){
     firebaseMood(mood);
     var commitURL = displayVideo();
     console.log(commitURL);
+
+    var validDate = moment($('#date-input').val().trim(), 'MM/DD/YYYY',true).isValid();
+
+    if (validDate) {
+        $('.alert-danger').hide()
+        var mood = $('#currentMood').val();
+        console.log(mood)
+        giphy(mood);
+        apiCall(mood);
+    } else {
+        $('.alert-danger').show()
+        $('#date-input').val('');
+    }
 });
 
 // firebase initialize for table database
@@ -129,8 +143,7 @@ function displayVideo(vidId) {
     var url = 'https://www.youtube.com/embed/' + vidId;
    var  finalUrl = url;
     iframe.attr("src", url);
-    $('#vidDiv').append(iframe);
-    return finalUrl;
+    $('#vidDiv').html(iframe);
 
     //640 width - 390 height for iframe element
 }
@@ -138,8 +151,16 @@ function displayVideo(vidId) {
 //function to take mood variable to determine playlist to send to API
 function generatePlaylistId(mood) {
     var playlistId;
-    if (mood = 'excited') {
-        playlistId = "";
+    if (mood == 'happy') {
+        playlistId = '';
+    } else if (mood =='sad') {
+        playlistId = '';
+    } else if (mood == 'mad') {
+        playlistId = '';
+    } else if (mood == 'excited') {
+        playlistId = '';
+    } else {
+        playlistId = '';
     }
 
     apiCall(playlistId);
