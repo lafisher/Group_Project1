@@ -8,14 +8,6 @@ $('.dropdown-menu li a').on('click', function(){
 $("#addMoodButton").on("click", function(){
     event.preventDefault();
 
-    var mood = $('#currentMood').val();
-    console.log(mood);
-    giphy(mood);
-    apiCall(mood);
-    firebaseMood(mood);
-    var commitURL = displayVideo();
-    console.log(commitURL);
-
     var validDate = moment($('#date-input').val().trim(), 'MM/DD/YYYY',true).isValid();
 
     if (validDate) {
