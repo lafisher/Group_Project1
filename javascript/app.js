@@ -33,7 +33,6 @@ var config = {
 
     firebase.initializeApp(config);
 
-
 // function to push data to firebase
 function firebaseMood(mood, url){
 
@@ -68,15 +67,7 @@ function firebaseMood(mood, url){
 
 };
 
-
-
-
 //Giphy function 
-
-
-
-
-
 function giphy(mood){
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
 
