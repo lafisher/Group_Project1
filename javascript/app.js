@@ -16,9 +16,9 @@ $("#addMoodButton").on("click", function(){
     var validDate = moment($('#date-input').val().trim(), 'MM/DD/YYYY',true).isValid();
 
     if (validDate) {
-        $('.alert-danger').hide()
+        $('.alert-danger').hide();
         var mood = $('#currentMood').val();
-        console.log(mood)
+        console.log(mood);
         giphy(mood);
         apiCall(mood);
     } else {
@@ -138,10 +138,10 @@ function displayVideo(mood, vidId) {
     iframe.attr('id', 'youtube-frame');
     //URL to be used to display the specifc video
     var url = 'https://www.youtube.com/embed/' + vidId;
-   var  finalUrl = url;
     iframe.attr("src", url);
     $('#vidDiv').html(iframe);
     firebaseMood(mood, url);
+
     //640 width - 390 height for iframe element
 }
 

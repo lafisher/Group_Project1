@@ -29,7 +29,7 @@
 </head>
 <div class = "main-container"> 
 	<div class="jumbotron">
-		<div class = "row" id = header1>
+		<div class = "row" id = "header1">
 			<div class="dropdown">
 			  <button class="btn btn-normal dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Today's Mood
 			  	<span class="caret"></span></button>
@@ -43,7 +43,7 @@
 			</div>
 	<div class="form-group row">
 		<div class="col-md-2">
-			<input class="form-control" id="date-input" placeholder="DD/MM/YYYY">
+			<input class="form-control" id="date-input" placeholder="MM/DD/YYYY">
 		</div>
 		<div class="col-md-4">
 			<div class="alert alert-danger" role="alert">
@@ -52,11 +52,11 @@
 		</div>
 	</div>
 		</div>
-	<div class = "row" id = header2>
+	<div class = "row" id = "header2">
   		<h1 id = "really"> Hooked on a Feeling </h1>
   	</div>	
 
-<div class = "row" id = header3>
+<div class = "row" id = "header3">
   
   	<button type="submit" class="btn btn-normal" id="addMoodButton">Update Mood</button></p>
 </div>        
@@ -66,10 +66,11 @@
 </div>
 
 	<div class = "row"> 
-		<div class = "col-lg-6" id = gifDiv>
+		<div class = "col-lg-6" id = "gifDiv">
+
 		</div>
-		<div class = "col-lg-6" id = vidDiv>
-		vids go here
+		<div class = "col-lg-6" id = "vidDiv">
+		
 		</div>
 	</div>
 	
@@ -79,12 +80,12 @@
 		</div>
 	</div>
 
-	<div class="panel panel-primary" id = "panelHead">
+	<div class="panel panel-normal" id = "panelHead">
 				<div class="panel-heading">
 					<h3 class="panel-title"><strong>Mood History</strong></h3>
 				</div>
 				<div class="panel-body">
-					<table class="table table-hover" id='moodTable'>
+					<table class="table table-hover" id="moodTable">
 						<thead>
 							<tr>
 								<th>Day</th>
