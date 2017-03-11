@@ -97,7 +97,7 @@ function displayVideo(mood) {
     var playlistId;
 
     if (mood == 'Happy') {
-        playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
+        playlistId = 'PL8vILzn50tsyECzBFC5UFYDnnX07TA7wX'; //happy playlist on leighs youtube channel
     } else if (mood =='Sad') {
         playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
     } else if (mood == 'Mad') {
