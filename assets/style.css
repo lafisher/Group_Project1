@@ -71,8 +71,16 @@ body {
 /***********************Shawn's Code***********************/
 
 iframe {
-	width: 640px;
-	height: 390px;
+/*	width: 640px;
+	height: 390px;*/
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+}
+
+#gif-img {
+	width: 100%;
+	height: 100%;
 	padding: 10px;
 }
 
