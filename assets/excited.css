@@ -57,7 +57,11 @@ body {
 #addMoodButton {
 	background-color: #a22678;
 }
+.row {
+	margin-left:0px; 
+	margin-right:0px;
 
+}
 
 /***********************Shawn's Code***********************/
 
