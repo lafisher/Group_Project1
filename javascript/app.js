@@ -82,14 +82,10 @@ $.ajax({
     })
     .done(function(response) { 
         var results = response.data;
-        console.log(response.data)
-        // for (var i = 0; i < response.data.length; i++){
-         var moodGif = $("<img>");
-         moodGif.attr("src", results[0].images.original.url);
-         moodGif.attr("width", "640");
-         moodGif.attr("height", "390");
-         $("#gifDiv").html(moodGif);   
-        // };
+        var moodGif = $("<img>");
+        moodGif.attr("src", results[0].images.original.url);
+        moodGif.attr("id", "gif-img");
+        $("#gifDiv").html(moodGif);   
     });
 }
 ////////////////////////////////// Shawn's Code //////////////////////////////////
@@ -97,22 +93,22 @@ $.ajax({
 //used to call youtube API to grab video IDs based on playlist ID and display on page
 function displayVideo(mood) {
 
+    console.log(mood);
     var playlistId;
 
-    if (mood == 'happy') {
-        playlistId = '';
-    } else if (mood =='sad') {
-        playlistId = '';
-    } else if (mood == 'mad') {
-        playlistId = '';
-    } else if (mood == 'excited') {
-        playlistId = '';
+    if (mood == 'Happy') {
+        playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
+    } else if (mood =='Sad') {
+        playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
+    } else if (mood == 'Mad') {
+        playlistId = 'PL8vILzn50tswztzIGsgMXTeCCc0n9_qIY'; //anger playlist on leighs youtube channel
+    } else if (mood == 'Excited') {
+        playlistId = 'PL8vILzn50tsyWmK0-QlqBk9t3WaLbTLlN'; //excited playlist on leighs youtube channel
     } else {
-        playlistId = '';
+        playlistId = 'PL8vILzn50tszZpEYl8AIViHC205ECVCM1'; //tried playlist on leighs youtube channel
     }
 
     var videoIdArray = []; //Array to hold each video ID
-    playlistId = 'PLhGO2bt0EkwvRUioaJMLxrMNhU44lRWg8'; //this value will be provided based on the emotion chosen
     var key = 'AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU'; //this is my personal google data API key
     var queryURL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlistId + "&key=" + key;
 
@@ -139,8 +135,7 @@ function displayVideo(mood) {
         iframe.attr("src", url);
         $('#vidDiv').html(iframe);
 
-        firebaseMood(mood, url);
-
+       firebaseMood(mood, url);
     });
 }
 
