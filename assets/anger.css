@@ -58,6 +58,29 @@ body {
 	background-color: #d93013;
 }
 
+.row {
+	margin-left:0px; 
+	margin-right:0px;
+}
+
+/* mobile resposive*/
+
+@media screen and (max-width: 980px) {
+		
+
+}
+
+@media screen and (max-width: 768px) {
+
+
+}
+
+@media screen and (max-width: 640px) {
+
+
+}
+
+
 
 /***********************Shawn's Code***********************/
 
