@@ -89,10 +89,24 @@ $.ajax({
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
 //used to call youtube API to grab video IDs based on playlist ID and display on page
-function displayVideo(mood, playlistId) {
+function displayVideo(mood) {
+
+    var playlistId;
+
+    if (mood == 'happy') {
+        playlistId = '';
+    } else if (mood =='sad') {
+        playlistId = '';
+    } else if (mood == 'mad') {
+        playlistId = '';
+    } else if (mood == 'excited') {
+        playlistId = '';
+    } else {
+        playlistId = '';
+    }
 
     var videoIdArray = []; //Array to hold each video ID
-    var playlistId = 'PLhGO2bt0EkwvRUioaJMLxrMNhU44lRWg8'; //this value will be provided based on the emotion chosen
+    playlistId = 'PLhGO2bt0EkwvRUioaJMLxrMNhU44lRWg8'; //this value will be provided based on the emotion chosen
     var key = 'AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU'; //this is my personal google data API key
     var queryURL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlistId + "&key=" + key;
 
@@ -101,7 +115,6 @@ function displayVideo(mood, playlistId) {
         query: 'GET'
     }).done(function(response) {
         console.log(response);
-        //for loop to grab the 
         for (var i = 0; i < response.items.length; i++) {
             videoIdArray.push(response.items[i].snippet.resourceId.videoId);   
         }
@@ -138,22 +151,22 @@ function displayVideo(mood, playlistId) {
 // }
 
 //function to take mood variable to determine playlist to send to API
-function generatePlaylistId(mood) {
-    var playlistId;
-    if (mood == 'happy') {
-        playlistId = '';
-    } else if (mood =='sad') {
-        playlistId = '';
-    } else if (mood == 'mad') {
-        playlistId = '';
-    } else if (mood == 'excited') {
-        playlistId = '';
-    } else {
-        playlistId = '';
-    }
+// function generatePlaylistId(mood) {
+//     var playlistId;
+//     if (mood == 'happy') {
+//         playlistId = '';
+//     } else if (mood =='sad') {
+//         playlistId = '';
+//     } else if (mood == 'mad') {
+//         playlistId = '';
+//     } else if (mood == 'excited') {
+//         playlistId = '';
+//     } else {
+//         playlistId = '';
+//     }
 
-    apiCall(playlistId);
-}
+//     apiCall(playlistId);
+// }
 
 //response.items[i].snippet.resourceId.videoId  <- thatll give us the vidId for each of the 5 songs
 // api reference to get playlistitems from playlistId:

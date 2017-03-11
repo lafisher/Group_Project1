@@ -58,17 +58,17 @@ body {
 	background-color: #330252;
 }
 
-th {
-	text-align: center;
-	font-weight: bold;
-}
-
 /***********************Shawn's Code***********************/
 
 iframe {
 	width: 640px;
 	height: 390px;
 	padding: 10px;
+}
+
+th {
+	text-align: center;
+	font-weight: bold;
 }
 
 .alert-danger {
