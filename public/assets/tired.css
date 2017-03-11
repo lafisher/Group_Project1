@@ -1,18 +1,14 @@
-.main-container{
-	width: 100%;
-}
 .jumbotron {
 	color: #D2D7D3;
 	font-size: 65px;
 	text-align: center;
-	height: 275px;
-	background-color: #552d81;
+	height: 250px;
+	background-color: #034002;
 	padding: 20px 0px 20px 0px; 
 }
 #really{
 	font-size: 85px;
 	text-align: center;
-	padding: 0px 0px 10px 0px;
 }
 .dropdown-toggle{
 	float: left;
@@ -20,13 +16,14 @@
 
 }
 #currentMood{
-	background-color: #330252;
+	background-color: #A0D468;
 }
 
 .col-md-2{float: left;
 	
 }
 .col-lg-6{
+	
 	text-align: center;
 	height: 400px;
 	width: 640px;
@@ -46,20 +43,21 @@
 	clear: both;
 }
 body {
-	background-image: url("../images/Inside-Out.jpg");
-	width: 100%;
+	background-image: url("../images/inside_out_disgust_2nd_wallpaper__by_alonsocantu-d8yqy8s.jpg");
 	
 }
 
 .panel-heading{
 	text-align: center;
-	background-color: #552d81;
+	background-color: #A0D468;
 }
+
 .panel-body {
 	text-align: center;
 }
+
 #addMoodButton {
-	background-color: #330252;
+	background-color: #A0D468;
 }
 
 .row {
@@ -71,22 +69,9 @@ body {
 /***********************Shawn's Code***********************/
 
 iframe {
-/*	width: 640px;
-	height: 390px;*/
-	width: 100%;
-	height: 100%;
+	width: 640px;
+	height: 390px;
 	padding: 10px;
-}
-
-#gif-img {
-	width: 100%;
-	height: 100%;
-	padding: 10px;
-}
-
-th {
-	text-align: center;
-	font-weight: bold;
 }
 
 .alert-danger {
@@ -97,5 +82,3 @@ th {
     padding: 11px;
     display: none;
 }
-
-/* mobile responsive 
