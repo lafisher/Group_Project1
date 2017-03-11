@@ -1,3 +1,6 @@
+.main-container{
+	width: 100%;
+}
 .jumbotron {
 	color: #D2D7D3;
 	font-size: 65px;
@@ -44,6 +47,7 @@
 }
 body {
 	background-image: url("../images/Inside-Out.jpg");
+	width: 100%;
 	
 }
 
@@ -56,6 +60,12 @@ body {
 }
 #addMoodButton {
 	background-color: #330252;
+}
+
+.row {
+	margin-left:0px; 
+	margin-right:0px;
+
 }
 
 /***********************Shawn's Code***********************/
@@ -80,3 +90,4 @@ th {
     display: none;
 }
 
+/* mobile responsive 
