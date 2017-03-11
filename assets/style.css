@@ -46,7 +46,7 @@
 	clear: both;
 }
 body {
-	background-image: url("../images/Inside-Out.jpg");
+	background-image: url("../images/newgroup.jpg");
 	width: 100%;
 	
 }
@@ -68,6 +68,7 @@ body {
 
 }
 
+/* very basic mobile responsive */ 
 @media screen and (max-width: 980px) {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
@@ -88,7 +89,6 @@ body {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
 	}
-
 
 }
 

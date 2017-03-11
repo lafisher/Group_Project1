@@ -14,7 +14,7 @@ var database = firebase.database();
 $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
     console.log(($(this).text()));
-    $('#currentMood').html("Today's Mood: " + ($(this).text()));
+    $('#currentMood').html("Current Mood: " + ($(this).text()));
 });
 
 $("#addMoodButton").on("click", function(){
@@ -33,6 +33,17 @@ $("#addMoodButton").on("click", function(){
         $('#date-input').val('');
     }
 });
+
+// Leigh's code for css change //
+/*    $('.dropdown-menu li a').on('click', function(){
+        $('#currentMood').val($(this).text());
+
+           if (mood == 'Happy') {
+           } else if (mood =='Sad') {
+           } else if (mood == 'Mad') {
+           } else if (mood == 'Excited') {
+           } else if (mood == 'Tired'){
+           }*/
 
 database.ref().on("child_added", function(childSnapShot){
     var tblRow = $('<tr>');
