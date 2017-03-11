@@ -1,0 +1,77 @@
+.jumbotron {
+	color: #77ac54;
+	font-size: 65px;
+	text-align: center;
+	height: 250px;
+	background-color: #fdcd4f;
+	padding: 20px 0px 20px 0px; 
+}
+#really{
+	font-size: 85px;
+	text-align: center;
+}
+.dropdown-toggle{
+	float: left;
+	margin: 0px 0px 0px 30px;
+
+}
+#currentMood{
+	background-color: #a22678;
+}
+
+.col-md-2{float: left;
+	
+}
+.col-lg-6{
+	
+	text-align: center;
+	height: 400px;
+	width: 640px;
+}
+#gifDiv{
+	float: left;
+	background-color: transparent;
+	margin: 0px 0px 20px 30px;
+}
+#vidDiv{
+	float: right;
+	background-color: transparent;
+	margin: 0px 30px 20px 0px;
+}
+.col-lg-12{
+	text-align: center;
+	clear: both;
+}
+body {
+	background-image: url("../images/bing-bong.jpg");
+	
+}
+
+.panel-heading{
+	text-align: center;
+	background-color: #a22678;
+}
+.panel-body {
+	text-align: center;
+}
+#addMoodButton {
+	background-color: #a22678;
+}
+
+
+/***********************Shawn's Code***********************/
+
+iframe {
+	width: 640px;
+	height: 390px;
+	padding: 10px;
+}
+
+.alert-danger {
+	font-size: 11pt;
+	margin-bottom: 0;
+    text-align: left;
+    height: 35px;
+    padding: 11px;
+    display: none;
+}
