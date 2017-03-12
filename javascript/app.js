@@ -76,7 +76,7 @@ database.ref().on("child_added", function(childSnapShot){
     tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
     tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
     tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
-    // tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
+    tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
     
     $("#moodTable").append(tblRow);
 
@@ -90,18 +90,18 @@ function firebaseMood(mood, url){
     var loggedDate = "";		               
     var loggedMood = "";
     var loggedVidLink = "";
-    // var loggedComment = "";
+    var loggedComment = "";
 
     loggedDate = $("#date-input").val().trim();
     loggedMood = mood;
     loggedVidLink = url;
-    // loggedComment = $("#comment-input").val().trim();
+    loggedComment = $("#journal").val().trim();
 
     database.ref().push({
         loggedDate: loggedDate,
         loggedMood: loggedMood,
-        loggedVidLink: loggedVidLink
-        // loggedComment: loggedComment
+        loggedVidLink: loggedVidLink,
+        loggedComment: loggedComment
     });
 
 };
