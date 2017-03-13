@@ -6,6 +6,7 @@ var config = {
         storageBucket: "gp1-hookedonafeeling.appspot.com",
         messagingSenderId: "236483189922"
     };
+// var database = firebase.database();
 
 firebase.initializeApp(config);
     firebase.auth().getRedirectResult().then(function(result) {
@@ -27,19 +28,30 @@ firebase.initializeApp(config);
          // ...
     });
 
-function userLogin(){
-   var provider = new firebase.auth.GoogleAuthProvider();
-   firebase.auth().signInWithRedirect(provider);
-};
+$('#login').on('click', function(userId, database){
+    event.preventDefault();
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+    var userId = firebase.auth().currentUser.uid;
+    var database = firebase.database();
+    tableBuild();
+});
+// function userLogin(userId){
+//     event.preventDefault();
+//     var provider = new firebase.auth.GoogleAuthProvider();
+//     firebase.auth().signInWithRedirect(provider);
+//     var userId = firebase.auth().currentUser.uid;
+// };
 
-var database = firebase.database();
+// var database = firebase.database();
 
+// mood dropdown menu conrtol
 $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
-    console.log(($(this).text()));
     $('#currentMood').html("Today's Mood: " + ($(this).text()));
 });
 
+// on click verifies correct date format is used and mood/data/commets are added to firebase
 $("#addMoodButton").on("click", function(){
     event.preventDefault();
 
@@ -50,47 +62,53 @@ $("#addMoodButton").on("click", function(){
         var mood = $('#currentMood').val();
         console.log(mood);
         giphy(mood);
-        displayVideo(mood);
+        firebaseMood(mood);
+        tableBuild();
+        // firebaseMood(mood, url);
+        // displayVideo(mood);
     } else {
         $('.alert-danger').show()
         $('#date-input').val('');
     }
 });
 
-database.ref().on("child_added", function(childSnapShot){
-    var tblRow = $('<tr>');
-    var urlLoggedVidLink = $("<href>");
-    urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
-    console.log(urlLoggedVidLink);
-    tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
-    tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
-    tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
-    // tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
-    
-    $("#moodTable").append(tblRow);
-
-}, function(errorObj){
-    console.log("Error: " + errorObj.code);
-});
+function tableBuild(){
+    var database = firebase.database();
+    var userId = firebase.auth().currentUser.uid;
+    firebase.database().ref('user/' + userId).on("child_added", function(childSnapShot){
+        var tblRow = $('<tr>');
+        var urlLoggedVidLink = $("<href>");
+        urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
+        console.log(urlLoggedVidLink);
+        tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
+        tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
+        tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
+        tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
+        $("#moodTable").append(tblRow);
+        }, function(errorObj){
+        console.log("Error: " + errorObj.code);
+    });
+};
 
 // function to push data to firebase
-function firebaseMood(mood, url){
+function firebaseMood(mood, url, userId, database){
 
+    var userId = firebase.auth().currentUser.uid;
     var loggedDate = "";		               
     var loggedMood = "";
     var loggedVidLink = "";
-    // var loggedComment = "";
+    var loggedComment = "";
 
     loggedDate = $("#date-input").val().trim();
     loggedMood = mood;
     loggedVidLink = url;
-    // loggedComment = $("#comment-input").val().trim();
+    loggedComment = $("#journal").val().trim();
 
-    database.ref().push({
+    firebase.database().ref('user/' + userId).push({
         loggedDate: loggedDate,
         loggedMood: loggedMood,
-        loggedVidLink: loggedVidLink
-        // loggedComment: loggedComment
+        // loggedVidLink: loggedVidLink,
+        loggedComment: loggedComment
     });
 
 };
@@ -114,53 +132,53 @@ $.ajax({
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
 //used to call youtube API to grab video IDs based on playlist ID and display on page
-function displayVideo(mood) {
+// function displayVideo(mood) {
 
-    console.log(mood);
-    var playlistId;
+//     console.log(mood);
+//     var playlistId;
 
-    if (mood == 'Happy') {
-        playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
-    } else if (mood =='Sad') {
-        playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
-    } else if (mood == 'Mad') {
-        playlistId = 'PL8vILzn50tswztzIGsgMXTeCCc0n9_qIY'; //anger playlist on leighs youtube channel
-    } else if (mood == 'Excited') {
-        playlistId = 'PL8vILzn50tsyWmK0-QlqBk9t3WaLbTLlN'; //excited playlist on leighs youtube channel
-    } else {
-        playlistId = 'PL8vILzn50tszZpEYl8AIViHC205ECVCM1'; //tried playlist on leighs youtube channel
-    }
+//     if (mood == 'Happy') {
+//         playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
+//     } else if (mood =='Sad') {
+//         playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
+//     } else if (mood == 'Mad') {
+//         playlistId = 'PL8vILzn50tswztzIGsgMXTeCCc0n9_qIY'; //anger playlist on leighs youtube channel
+//     } else if (mood == 'Excited') {
+//         playlistId = 'PL8vILzn50tsyWmK0-QlqBk9t3WaLbTLlN'; //excited playlist on leighs youtube channel
+//     } else {
+//         playlistId = 'PL8vILzn50tszZpEYl8AIViHC205ECVCM1'; //tried playlist on leighs youtube channel
+//     }
 
-    var videoIdArray = []; //Array to hold each video ID
-    var key = 'AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU'; //this is my personal google data API key
-    var queryURL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlistId + "&key=" + key;
+//     var videoIdArray = []; //Array to hold each video ID
+//     var key = 'AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU'; //this is my personal google data API key
+//     var queryURL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlistId + "&key=" + key;
 
-    $.ajax({
-        url: queryURL,
-        query: 'GET'
-    }).done(function(response) {
-        console.log(response);
-        for (var i = 0; i < response.items.length; i++) {
-            videoIdArray.push(response.items[i].snippet.resourceId.videoId);   
-        }
+//     $.ajax({
+//         url: queryURL,
+//         query: 'GET'
+//     }).done(function(response) {
+//         console.log(response);
+//         for (var i = 0; i < response.items.length; i++) {
+//             videoIdArray.push(response.items[i].snippet.resourceId.videoId);   
+//         }
 
-        var randomNum = Math.floor(Math.random() * videoIdArray.length); //random number to grab a random video id from the array
+//         var randomNum = Math.floor(Math.random() * videoIdArray.length); //random number to grab a random video id from the array
 
-        //call displayVideo function with a random video id
-        videoId = videoIdArray[randomNum];
-        console.log(videoIdArray);
+//         //call displayVideo function with a random video id
+//         videoId = videoIdArray[randomNum];
+//         console.log(videoIdArray);
 
-        //iframe html element to hold youtube video
-        var iframe = $('<iframe>');
-        iframe.attr('id', 'youtube-frame');
-        //URL to be used to display the specifc video
-        var url = 'https://www.youtube.com/embed/' + videoId;
-        iframe.attr("src", url);
-        $('#vidDiv').html(iframe);
+//         //iframe html element to hold youtube video
+//         var iframe = $('<iframe>');
+//         iframe.attr('id', 'youtube-frame');
+//         //URL to be used to display the specifc video
+//         var url = 'https://www.youtube.com/embed/' + videoId;
+//         iframe.attr("src", url);
+//         $('#vidDiv').html(iframe);
 
-       firebaseMood(mood, url);
-    });
-}
+//        firebaseMood(mood, url);
+//     });
+// }
 
 //function to be called to display a random video from the array of playlist ids pulled from YouTube API
 // function displayVideo(mood, vidId) {
