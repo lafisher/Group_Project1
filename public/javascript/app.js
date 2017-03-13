@@ -37,7 +37,7 @@ var database = firebase.database();
 $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
     console.log(($(this).text()));
-    $('#currentMood').html("Today's Mood: " + ($(this).text()));
+    $('#currentMood').html("Current Mood: " + ($(this).text()));
 });
 
 $("#addMoodButton").on("click", function(){
@@ -57,6 +57,17 @@ $("#addMoodButton").on("click", function(){
     }
 });
 
+// Leigh's code for css change //
+/*    $('.dropdown-menu li a').on('click', function(){
+        $('#currentMood').val($(this).text());
+
+           if (mood == 'Happy') {
+           } else if (mood =='Sad') {
+           } else if (mood == 'Mad') {
+           } else if (mood == 'Excited') {
+           } else if (mood == 'Tired'){
+           }*/
+
 database.ref().on("child_added", function(childSnapShot){
     var tblRow = $('<tr>');
     var urlLoggedVidLink = $("<href>");
@@ -65,7 +76,7 @@ database.ref().on("child_added", function(childSnapShot){
     tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
     tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
     tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
-    // tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
+    tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
     
     $("#moodTable").append(tblRow);
 
@@ -79,18 +90,18 @@ function firebaseMood(mood, url){
     var loggedDate = "";		               
     var loggedMood = "";
     var loggedVidLink = "";
-    // var loggedComment = "";
+    var loggedComment = "";
 
     loggedDate = $("#date-input").val().trim();
     loggedMood = mood;
     loggedVidLink = url;
-    // loggedComment = $("#comment-input").val().trim();
+    loggedComment = $("#journal").val().trim();
 
     database.ref().push({
         loggedDate: loggedDate,
         loggedMood: loggedMood,
-        loggedVidLink: loggedVidLink
-        // loggedComment: loggedComment
+        loggedVidLink: loggedVidLink,
+        loggedComment: loggedComment
     });
 
 };
@@ -120,7 +131,7 @@ function displayVideo(mood) {
     var playlistId;
 
     if (mood == 'Happy') {
-        playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
+        playlistId = 'PL8vILzn50tsyECzBFC5UFYDnnX07TA7wX'; //happy playlist on leighs youtube channel
     } else if (mood =='Sad') {
         playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
     } else if (mood == 'Mad') {
