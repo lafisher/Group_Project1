@@ -6,7 +6,6 @@ var config = {
         storageBucket: "gp1-hookedonafeeling.appspot.com",
         messagingSenderId: "236483189922"
     };
-// var database = firebase.database();
 
 firebase.initializeApp(config);
     firebase.auth().getRedirectResult().then(function(result) {
@@ -28,6 +27,8 @@ firebase.initializeApp(config);
          // ...
     });
 
+// click event for user loging, uses google accout stores user accout id in userId variable for later use
+// initalizes firebase db and calls tableBuild function to display stored user input
 $('#login').on('click', function(userId, database){
     event.preventDefault();
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -36,14 +37,6 @@ $('#login').on('click', function(userId, database){
     var database = firebase.database();
     tableBuild();
 });
-// function userLogin(userId){
-//     event.preventDefault();
-//     var provider = new firebase.auth.GoogleAuthProvider();
-//     firebase.auth().signInWithRedirect(provider);
-//     var userId = firebase.auth().currentUser.uid;
-// };
-
-// var database = firebase.database();
 
 // mood dropdown menu conrtol
 $('.dropdown-menu li a').on('click', function(){
@@ -129,7 +122,7 @@ $.ajax({
         moodGif.attr("id", "gif-img");
         $("#gifDiv").html(moodGif);   
     });
-}
+};
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
 // used to call youtube API to grab video IDs based on playlist ID and display on page
