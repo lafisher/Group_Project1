@@ -66,6 +66,17 @@ database.ref().on("child_added", function(childSnapShot){
     tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
     tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
     // tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
+
+    // database.ref('users/' + userId).on("child_added", function(childSnapShot) {
+    //     var tblRow = $('<tr>');
+    //     var urlLoggedVidLink = $("<href>");
+    //     urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
+    //     console.log(urlLoggedVidLink);
+    //     tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
+    //     tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
+    //     tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
+    //     tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
+    // });
     
     $("#moodTable").append(tblRow);
 
@@ -92,6 +103,13 @@ function firebaseMood(mood, url){
         loggedVidLink: loggedVidLink
         // loggedComment: loggedComment
     });
+
+    // database.ref('users/' + userId).push({
+    //     loggedDate: loggedDate,
+    //     loggedMood: loggedMood,
+    //     loggedVidLink: loggedVidLink
+    //     loggedComment: loggedComment
+    // });
 
 };
 
