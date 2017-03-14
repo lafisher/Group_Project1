@@ -68,30 +68,6 @@ body {
 
 }
 
-@media screen and (max-width: 980px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
-		
-
-}
-
-@media screen and (max-width: 768px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
-
-
-}
-
-@media screen and (max-width: 640px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
-
-
-}
-
 /***********************Shawn's Code***********************/
 
 iframe {
