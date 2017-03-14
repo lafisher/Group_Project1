@@ -35,7 +35,6 @@ $('#login').on('click', function(userId, database){
     firebase.auth().signInWithRedirect(provider);
     var userId = firebase.auth().currentUser.uid;
     var database = firebase.database();
-    tableBuild();
 });
 
 // mood dropdown menu conrtol
@@ -175,34 +174,34 @@ function displayVideo(mood) {
 }
 
 // function to be called to display a random video from the array of playlist ids pulled from YouTube API
-function displayVideo(mood, vidId) {
-    //iframe html element to hold youtube video
-    var iframe = $('<iframe>');
-    iframe.attr('id', 'youtube-frame');
-    //URL to be used to display the specifc video
-    var url = 'https://www.youtube.com/embed/' + vidId;
-    iframe.attr("src", url);
-    $('#vidDiv').html(iframe);
-    firebaseMood(mood, url);
-}
+// function displayVideo(mood, vidId) {
+//     //iframe html element to hold youtube video
+//     var iframe = $('<iframe>');
+//     iframe.attr('id', 'youtube-frame');
+//     //URL to be used to display the specifc video
+//     var url = 'https://www.youtube.com/embed/' + vidId;
+//     iframe.attr("src", url);
+//     $('#vidDiv').html(iframe);
+//     firebaseMood(mood, url);
+// }
 
 // function to take mood variable to determine playlist to send to API
-function generatePlaylistId(mood) {
-    var playlistId;
-    if (mood == 'happy') {
-        playlistId = '';
-    } else if (mood =='sad') {
-        playlistId = '';
-    } else if (mood == 'mad') {
-        playlistId = '';
-    } else if (mood == 'excited') {
-        playlistId = '';
-    } else {
-        playlistId = '';
-    }
+// function generatePlaylistId(mood) {
+//     var playlistId;
+//     if (mood == 'happy') {
+//         playlistId = '';
+//     } else if (mood =='sad') {
+//         playlistId = '';
+//     } else if (mood == 'mad') {
+//         playlistId = '';
+//     } else if (mood == 'excited') {
+//         playlistId = '';
+//     } else {
+//         playlistId = '';
+//     }
 
-    apiCall(playlistId);
-}
+//     apiCall(playlistId);
+// }
 
 //response.items[i].snippet.resourceId.videoId  <- thatll give us the vidId for each of the 5 songs
 // api reference to get playlistitems from playlistId:

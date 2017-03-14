@@ -8,38 +8,42 @@ var config = {
     };
 
 firebase.initializeApp(config);
-//     firebase.auth().getRedirectResult().then(function(result) {
-//         if (result.credential) {
-//            // This gives you a Google Access Token. You can use it to access the Google API.
-//            var token = result.credential.accessToken;
-//            // ...
-//          }
-//          // The signed-in user info.
-//          var user = result.user;
-//         }).catch(function(error) {
-//          // Handle Errors here.
-//          var errorCode = error.code;
-//          var errorMessage = error.message;
-//          // The email of the user's account used.
-//          var email = error.email;
-//          // The firebase.auth.AuthCredential type that was used.
-//          var credential = error.credential;
-//          // ...
-//     });
+    firebase.auth().getRedirectResult().then(function(result) {
+        if (result.credential) {
+           // This gives you a Google Access Token. You can use it to access the Google API.
+           var token = result.credential.accessToken;
+           // ...
+         }
+         // The signed-in user info.
+         var user = result.user;
+        }).catch(function(error) {
+         // Handle Errors here.
+         var errorCode = error.code;
+         var errorMessage = error.message;
+         // The email of the user's account used.
+         var email = error.email;
+         // The firebase.auth.AuthCredential type that was used.
+         var credential = error.credential;
+         // ...
+    });
 
-// function userLogin(){
-//    var provider = new firebase.auth.GoogleAuthProvider();
-//    firebase.auth().signInWithRedirect(provider);
-// };
-
-var database = firebase.database();
-
-$('.dropdown-menu li a').on('click', function(){
-    $('#currentMood').val($(this).text());
-    console.log(($(this).text()));
-    $('#currentMood').html("Current Mood: " + ($(this).text()));
+// click event for user loging, uses google accout stores user accout id in userId variable for later use
+// initalizes firebase db and calls tableBuild function to display stored user input
+$('#login').on('click', function(userId, database){
+    event.preventDefault();
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+    var userId = firebase.auth().currentUser.uid;
+    var database = firebase.database();
 });
 
+// mood dropdown menu conrtol
+$('.dropdown-menu li a').on('click', function(){
+    $('#currentMood').val($(this).text());
+    $('#currentMood').html("Today's Mood: " + ($(this).text()));
+});
+
+// on click verifies correct date format is used and mood/data/commets are added to firebase
 $("#addMoodButton").on("click", function(){
     event.preventDefault();
 
@@ -51,42 +55,38 @@ $("#addMoodButton").on("click", function(){
         console.log(mood);
         giphy(mood);
         displayVideo(mood);
+        // firebaseMood(mood);
+        tableBuild();
+        // firebaseMood(mood, url);
+        
     } else {
         $('.alert-danger').show()
         $('#date-input').val('');
     }
 });
 
-// Leigh's code for css change //
-/*    $('.dropdown-menu li a').on('click', function(){
-        $('#currentMood').val($(this).text());
-
-           if (mood == 'Happy') {
-           } else if (mood =='Sad') {
-           } else if (mood == 'Mad') {
-           } else if (mood == 'Excited') {
-           } else if (mood == 'Tired'){
-           }*/
-
-database.ref().on("child_added", function(childSnapShot){
-    var tblRow = $('<tr>');
-    var urlLoggedVidLink = $("<href>");
-    urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
-    console.log(urlLoggedVidLink);
-    tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
-    tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
-    tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
-    tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
-    
-    $("#moodTable").append(tblRow);
-
-}, function(errorObj){
-    console.log("Error: " + errorObj.code);
-});
+function tableBuild(){
+    var database = firebase.database();
+    var userId = firebase.auth().currentUser.uid;
+    firebase.database().ref('user/' + userId).on("child_added", function(childSnapShot){
+        var tblRow = $('<tr>');
+        var urlLoggedVidLink = $("<href>");
+        urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
+        console.log(urlLoggedVidLink);
+        tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
+        tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
+        tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
+        tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
+        $("#moodTable").append(tblRow);
+        }, function(errorObj){
+        console.log("Error: " + errorObj.code);
+    });
+};
 
 // function to push data to firebase
-function firebaseMood(mood, url){
+function firebaseMood(mood, url, userId, database){
 
+    var userId = firebase.auth().currentUser.uid;
     var loggedDate = "";		               
     var loggedMood = "";
     var loggedVidLink = "";
@@ -97,7 +97,7 @@ function firebaseMood(mood, url){
     loggedVidLink = url;
     loggedComment = $("#journal").val().trim();
 
-    database.ref().push({
+    firebase.database().ref('user/' + userId).push({
         loggedDate: loggedDate,
         loggedMood: loggedMood,
         loggedVidLink: loggedVidLink,
@@ -121,17 +121,17 @@ $.ajax({
         moodGif.attr("id", "gif-img");
         $("#gifDiv").html(moodGif);   
     });
-}
+};
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
-//used to call youtube API to grab video IDs based on playlist ID and display on page
+// used to call youtube API to grab video IDs based on playlist ID and display on page
 function displayVideo(mood) {
 
     console.log(mood);
     var playlistId;
 
     if (mood == 'Happy') {
-        playlistId = 'PL8vILzn50tsyECzBFC5UFYDnnX07TA7wX'; //happy playlist on leighs youtube channel
+        playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
     } else if (mood =='Sad') {
         playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
     } else if (mood == 'Mad') {
@@ -173,7 +173,7 @@ function displayVideo(mood) {
     });
 }
 
-//function to be called to display a random video from the array of playlist ids pulled from YouTube API
+// function to be called to display a random video from the array of playlist ids pulled from YouTube API
 // function displayVideo(mood, vidId) {
 //     //iframe html element to hold youtube video
 //     var iframe = $('<iframe>');
@@ -185,7 +185,7 @@ function displayVideo(mood) {
 //     firebaseMood(mood, url);
 // }
 
-//function to take mood variable to determine playlist to send to API
+// function to take mood variable to determine playlist to send to API
 // function generatePlaylistId(mood) {
 //     var playlistId;
 //     if (mood == 'happy') {
