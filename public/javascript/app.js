@@ -62,10 +62,11 @@ $("#addMoodButton").on("click", function(){
         var mood = $('#currentMood').val();
         console.log(mood);
         giphy(mood);
-        firebaseMood(mood);
+        displayVideo(mood);
+        // firebaseMood(mood);
         tableBuild();
         // firebaseMood(mood, url);
-        // displayVideo(mood);
+        
     } else {
         $('.alert-danger').show()
         $('#date-input').val('');
@@ -107,7 +108,7 @@ function firebaseMood(mood, url, userId, database){
     firebase.database().ref('user/' + userId).push({
         loggedDate: loggedDate,
         loggedMood: loggedMood,
-        // loggedVidLink: loggedVidLink,
+        loggedVidLink: loggedVidLink,
         loggedComment: loggedComment
     });
 
@@ -131,84 +132,84 @@ $.ajax({
 }
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
-//used to call youtube API to grab video IDs based on playlist ID and display on page
-// function displayVideo(mood) {
+// used to call youtube API to grab video IDs based on playlist ID and display on page
+function displayVideo(mood) {
 
-//     console.log(mood);
-//     var playlistId;
+    console.log(mood);
+    var playlistId;
 
-//     if (mood == 'Happy') {
-//         playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
-//     } else if (mood =='Sad') {
-//         playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
-//     } else if (mood == 'Mad') {
-//         playlistId = 'PL8vILzn50tswztzIGsgMXTeCCc0n9_qIY'; //anger playlist on leighs youtube channel
-//     } else if (mood == 'Excited') {
-//         playlistId = 'PL8vILzn50tsyWmK0-QlqBk9t3WaLbTLlN'; //excited playlist on leighs youtube channel
-//     } else {
-//         playlistId = 'PL8vILzn50tszZpEYl8AIViHC205ECVCM1'; //tried playlist on leighs youtube channel
-//     }
+    if (mood == 'Happy') {
+        playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
+    } else if (mood =='Sad') {
+        playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
+    } else if (mood == 'Mad') {
+        playlistId = 'PL8vILzn50tswztzIGsgMXTeCCc0n9_qIY'; //anger playlist on leighs youtube channel
+    } else if (mood == 'Excited') {
+        playlistId = 'PL8vILzn50tsyWmK0-QlqBk9t3WaLbTLlN'; //excited playlist on leighs youtube channel
+    } else {
+        playlistId = 'PL8vILzn50tszZpEYl8AIViHC205ECVCM1'; //tried playlist on leighs youtube channel
+    }
 
-//     var videoIdArray = []; //Array to hold each video ID
-//     var key = 'AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU'; //this is my personal google data API key
-//     var queryURL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlistId + "&key=" + key;
+    var videoIdArray = []; //Array to hold each video ID
+    var key = 'AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU'; //this is my personal google data API key
+    var queryURL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlistId + "&key=" + key;
 
-//     $.ajax({
-//         url: queryURL,
-//         query: 'GET'
-//     }).done(function(response) {
-//         console.log(response);
-//         for (var i = 0; i < response.items.length; i++) {
-//             videoIdArray.push(response.items[i].snippet.resourceId.videoId);   
-//         }
+    $.ajax({
+        url: queryURL,
+        query: 'GET'
+    }).done(function(response) {
+        console.log(response);
+        for (var i = 0; i < response.items.length; i++) {
+            videoIdArray.push(response.items[i].snippet.resourceId.videoId);   
+        }
 
-//         var randomNum = Math.floor(Math.random() * videoIdArray.length); //random number to grab a random video id from the array
+        var randomNum = Math.floor(Math.random() * videoIdArray.length); //random number to grab a random video id from the array
 
-//         //call displayVideo function with a random video id
-//         videoId = videoIdArray[randomNum];
-//         console.log(videoIdArray);
+        //call displayVideo function with a random video id
+        videoId = videoIdArray[randomNum];
+        console.log(videoIdArray);
 
-//         //iframe html element to hold youtube video
-//         var iframe = $('<iframe>');
-//         iframe.attr('id', 'youtube-frame');
-//         //URL to be used to display the specifc video
-//         var url = 'https://www.youtube.com/embed/' + videoId;
-//         iframe.attr("src", url);
-//         $('#vidDiv').html(iframe);
+        //iframe html element to hold youtube video
+        var iframe = $('<iframe>');
+        iframe.attr('id', 'youtube-frame');
+        //URL to be used to display the specifc video
+        var url = 'https://www.youtube.com/embed/' + videoId;
+        iframe.attr("src", url);
+        $('#vidDiv').html(iframe);
 
-//        firebaseMood(mood, url);
-//     });
-// }
+       firebaseMood(mood, url);
+    });
+}
 
-//function to be called to display a random video from the array of playlist ids pulled from YouTube API
-// function displayVideo(mood, vidId) {
-//     //iframe html element to hold youtube video
-//     var iframe = $('<iframe>');
-//     iframe.attr('id', 'youtube-frame');
-//     //URL to be used to display the specifc video
-//     var url = 'https://www.youtube.com/embed/' + vidId;
-//     iframe.attr("src", url);
-//     $('#vidDiv').html(iframe);
-//     firebaseMood(mood, url);
-// }
+// function to be called to display a random video from the array of playlist ids pulled from YouTube API
+function displayVideo(mood, vidId) {
+    //iframe html element to hold youtube video
+    var iframe = $('<iframe>');
+    iframe.attr('id', 'youtube-frame');
+    //URL to be used to display the specifc video
+    var url = 'https://www.youtube.com/embed/' + vidId;
+    iframe.attr("src", url);
+    $('#vidDiv').html(iframe);
+    firebaseMood(mood, url);
+}
 
-//function to take mood variable to determine playlist to send to API
-// function generatePlaylistId(mood) {
-//     var playlistId;
-//     if (mood == 'happy') {
-//         playlistId = '';
-//     } else if (mood =='sad') {
-//         playlistId = '';
-//     } else if (mood == 'mad') {
-//         playlistId = '';
-//     } else if (mood == 'excited') {
-//         playlistId = '';
-//     } else {
-//         playlistId = '';
-//     }
+// function to take mood variable to determine playlist to send to API
+function generatePlaylistId(mood) {
+    var playlistId;
+    if (mood == 'happy') {
+        playlistId = '';
+    } else if (mood =='sad') {
+        playlistId = '';
+    } else if (mood == 'mad') {
+        playlistId = '';
+    } else if (mood == 'excited') {
+        playlistId = '';
+    } else {
+        playlistId = '';
+    }
 
-//     apiCall(playlistId);
-// }
+    apiCall(playlistId);
+}
 
 //response.items[i].snippet.resourceId.videoId  <- thatll give us the vidId for each of the 5 songs
 // api reference to get playlistitems from playlistId:
