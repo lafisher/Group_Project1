@@ -158,7 +158,7 @@ function displayVideo(mood) {
         iframe.attr("src", url);
         $('#vidDiv').html(iframe);
 
-       firebaseMood(mood, url);
+         firebaseMood(mood, url);
     });
 }
 
