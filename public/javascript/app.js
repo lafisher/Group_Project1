@@ -26,20 +26,23 @@ firebase.initializeApp(config);
          var credential = error.credential;
          // ...
     });
+// click event for user loging, uses google accout stores user accout id in userId variable for later use
+// initalizes firebase db and calls tableBuild function to display stored user input
+$('#login').on('click', function(userId, database){
+    event.preventDefault();
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+    var userId = firebase.auth().currentUser.uid;
+    var database = firebase.database();
+});
 
-function userLogin(){
-   var provider = new firebase.auth.GoogleAuthProvider();
-   firebase.auth().signInWithRedirect(provider);
-};
-
-var database = firebase.database();
-
+// mood dropdown menu conrtol
 $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
-    console.log(($(this).text()));
     $('#currentMood').html("Today's Mood: " + ($(this).text()));
 });
 
+// on click verifies correct date format is used and mood/data/commets are added to firebase
 $("#addMoodButton").on("click", function(){
     event.preventDefault();
 
@@ -51,46 +54,93 @@ $("#addMoodButton").on("click", function(){
         console.log(mood);
         giphy(mood);
         displayVideo(mood);
+        // firebaseMood(mood);
+        tableBuild();
+        // firebaseMood(mood, url);
+        
     } else {
         $('.alert-danger').show()
         $('#date-input').val('');
     }
 });
 
-database.ref().on("child_added", function(childSnapShot){
-    var tblRow = $('<tr>');
-    var urlLoggedVidLink = $("<href>");
-    urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
-    console.log(urlLoggedVidLink);
-    tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
-    tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
-    tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
-    // tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
-    
-    $("#moodTable").append(tblRow);
 
-}, function(errorObj){
-    console.log("Error: " + errorObj.code);
-});
+function tableBuild(){
+    var database = firebase.database();
+    var userId = firebase.auth().currentUser.uid;
+    firebase.database().ref('user/' + userId).on("child_added", function(childSnapShot){
+        var tblRow = $('<tr>');
+        var urlLoggedVidLink = $("<href>");
+        urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
+        console.log(urlLoggedVidLink);
+        tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
+        tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
+        tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
+        tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
+        $("#moodTable").append(tblRow);
+        }, function(errorObj){
+        console.log("Error: " + errorObj.code);
+    });
+};
+
+// Leigh's code for css change //
+        //happy
+    $("#happy").click(function(){
+        $(".jumbotron").css("background-color", "#2e5bce");
+        $("#currentMood").css("background-color", "#f8f7be");
+        $("#addMoodButton").css("background-color", "#f8f7be");
+        $(".panel-heading").css("background-color", "#f8f7be");
+        //$(".body").css("background-image: url", "../images/newjoy.jpg");
+    });
+    $("#sad").click(function(){
+        $(".jumbotron").css("background-color", "#044f67");
+        $("#currentMood").css("background-color", "#37bc9b");
+        $("#addMoodButton").css("background-color", "#37bc9b");
+        $(".panel-heading").css("background-color", "#37bc9b");
+        //$(".body").css("background-image: url", "../images/newsadness.jpg");
+    });
+    $("#mad").click(function(){
+        $(".jumbotron").css("background-color", "#800a0a"); 
+        $("#currentMood").css("background-color", "#d93013");
+        $("#addMoodButton").css("background-color", "#d93013");
+        $(".panel-heading").css("background-color", "#d93013");
+        //$(".body").css("background-image: url", "../images/newanger.jpg");
+    });
+    $("#excited").click(function(){
+        $(".jumbotron").css("background-color", "#fdcd4f");
+        $("#currentMood").css("background-color", "#a22678");
+        $("#addMoodButton").css("background-color", "#a22678");
+        $(".panel-heading").css("background-color", "#a22678");
+        //$(".body").css("background-image: url", "../images/newbingbong.jpg");
+    });
+    $("#tired").click(function(){
+        $(".jumbotron").css("background-color", "#034002");
+        $("#currentMood").css("background-color", "#A0D468");
+        $("#addMoodButton").css("background-color", "#A0D468");
+        $(".panel-heading").css("background-color", "#A0D468");
+        //$(".body").css("background-image: url", "../images/newdisgust.jpg");
+    });
+//end leigh's code
 
 // function to push data to firebase
-function firebaseMood(mood, url){
+function firebaseMood(mood, url, userId, database){
 
+    var userId = firebase.auth().currentUser.uid;
     var loggedDate = "";		               
     var loggedMood = "";
     var loggedVidLink = "";
-    // var loggedComment = "";
+    var loggedComment = "";
 
     loggedDate = $("#date-input").val().trim();
     loggedMood = mood;
     loggedVidLink = url;
-    // loggedComment = $("#comment-input").val().trim();
+    loggedComment = $("#journal").val().trim();
 
-    database.ref().push({
+    firebase.database().ref('user/' + userId).push({
         loggedDate: loggedDate,
         loggedMood: loggedMood,
-        loggedVidLink: loggedVidLink
-        // loggedComment: loggedComment
+        loggedVidLink: loggedVidLink,
+        loggedComment: loggedComment
     });
 
 };
@@ -110,10 +160,10 @@ $.ajax({
         moodGif.attr("id", "gif-img");
         $("#gifDiv").html(moodGif);   
     });
-}
+};
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
-//used to call youtube API to grab video IDs based on playlist ID and display on page
+// used to call youtube API to grab video IDs based on playlist ID and display on page
 function displayVideo(mood) {
 
     console.log(mood);
@@ -162,7 +212,7 @@ function displayVideo(mood) {
     });
 }
 
-//function to be called to display a random video from the array of playlist ids pulled from YouTube API
+// function to be called to display a random video from the array of playlist ids pulled from YouTube API
 // function displayVideo(mood, vidId) {
 //     //iframe html element to hold youtube video
 //     var iframe = $('<iframe>');
@@ -174,7 +224,7 @@ function displayVideo(mood) {
 //     firebaseMood(mood, url);
 // }
 
-//function to take mood variable to determine playlist to send to API
+// function to take mood variable to determine playlist to send to API
 // function generatePlaylistId(mood) {
 //     var playlistId;
 //     if (mood == 'happy') {

@@ -43,7 +43,7 @@
 	clear: both;
 }
 body {
-	background-image: url("../images/io_anger_standard.jpg");
+	background-image: url("../images/newanger.jpg");
 	
 }
 
@@ -63,22 +63,27 @@ body {
 	margin-right:0px;
 }
 
-/* mobile resposive*/
-
+/* very basic mobile responsive */ 
 @media screen and (max-width: 980px) {
+	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
+		width: auto;
+	}
 		
 
 }
 
 @media screen and (max-width: 768px) {
+	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
+		width: auto;
+	}
 
 
 }
 
 @media screen and (max-width: 640px) {
-
-
-}
+	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
+		width: auto;
+	}
 
 
 
