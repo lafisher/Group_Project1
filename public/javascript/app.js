@@ -40,7 +40,8 @@ $('#login').on('click', function(userId, database){
 // mood dropdown menu conrtol
 $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
-    $('#currentMood').html("Today's Mood: " + ($(this).text()));
+    console.log(($(this).text()));
+    $('#currentMood').html("Current Mood: " + ($(this).text()));
 });
 
 // on click verifies correct date format is used and mood/data/commets are added to firebase
@@ -82,6 +83,32 @@ function tableBuild(){
         console.log("Error: " + errorObj.code);
     });
 };
+// Leigh's code for css change //
+/*    $('.dropdown-menu li a').on('click', function(){
+        $('#currentMood').val($(this).text());
+
+           if (mood == 'Happy') {
+           } else if (mood =='Sad') {
+           } else if (mood == 'Mad') {
+           } else if (mood == 'Excited') {
+           } else if (mood == 'Tired'){
+           }*/
+
+database.ref().on("child_added", function(childSnapShot){
+    var tblRow = $('<tr>');
+    var urlLoggedVidLink = $("<href>");
+    urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
+    console.log(urlLoggedVidLink);
+    tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
+    tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
+    tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
+    tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
+    
+    $("#moodTable").append(tblRow);
+
+}, function(errorObj){
+    console.log("Error: " + errorObj.code);
+});
 
 // function to push data to firebase
 function firebaseMood(mood, url, userId, database){
@@ -131,7 +158,7 @@ function displayVideo(mood) {
     var playlistId;
 
     if (mood == 'Happy') {
-        playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
+        playlistId = 'PL8vILzn50tsyECzBFC5UFYDnnX07TA7wX'; //happy playlist on leighs youtube channel
     } else if (mood =='Sad') {
         playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
     } else if (mood == 'Mad') {
