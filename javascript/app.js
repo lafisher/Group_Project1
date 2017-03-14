@@ -58,15 +58,43 @@ $("#addMoodButton").on("click", function(){
 });
 
 // Leigh's code for css change //
-/*    $('.dropdown-menu li a').on('click', function(){
-        $('#currentMood').val($(this).text());
-
-           if (mood == 'Happy') {
-           } else if (mood =='Sad') {
-           } else if (mood == 'Mad') {
-           } else if (mood == 'Excited') {
-           } else if (mood == 'Tired'){
-           }*/
+        //happy
+    $("#happy").click(function(){
+        $(".jumbotron").css("background-color", "#2e5bce");
+        $("#currentMood").css("background-color", "#f8f7be");
+        $("#addMoodButton").css("background-color", "#f8f7be");
+        $(".panel-heading").css("background-color", "#f8f7be");
+        //$(".body").css("background-image: url", "../images/newjoy.jpg");
+    });
+    $("#sad").click(function(){
+        $(".jumbotron").css("background-color", "#044f67");
+        $("#currentMood").css("background-color", "#37bc9b");
+        $("#addMoodButton").css("background-color", "#37bc9b");
+        $(".panel-heading").css("background-color", "#37bc9b");
+        //$(".body").css("background-image: url", "../images/newsadness.jpg");
+    });
+    $("#mad").click(function(){
+        $(".jumbotron").css("background-color", "#800a0a"); 
+        $("#currentMood").css("background-color", "#d93013");
+        $("#addMoodButton").css("background-color", "#d93013");
+        $(".panel-heading").css("background-color", "#d93013");
+        //$(".body").css("background-image: url", "../images/newanger.jpg");
+    });
+    $("#excited").click(function(){
+        $(".jumbotron").css("background-color", "#fdcd4f");
+        $("#currentMood").css("background-color", "#a22678");
+        $("#addMoodButton").css("background-color", "#a22678");
+        $(".panel-heading").css("background-color", "#a22678");
+        //$(".body").css("background-image: url", "../images/newbingbong.jpg");
+    });
+    $("#tired").click(function(){
+        $(".jumbotron").css("background-color", "#034002");
+        $("#currentMood").css("background-color", "#A0D468");
+        $("#addMoodButton").css("background-color", "#A0D468");
+        $(".panel-heading").css("background-color", "#A0D468");
+        //$(".body").css("background-image: url", "../images/newdisgust.jpg");
+    });
+//end leigh's code
 
 database.ref().on("child_added", function(childSnapShot){
     var tblRow = $('<tr>');
