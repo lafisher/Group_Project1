@@ -45,7 +45,7 @@
 	text-align: center;
 	clear: both;
 }
-body {
+.main-container {
 	background-image: url("../images/newgroup.jpg");
 	width: 100%;
 	
@@ -80,8 +80,11 @@ body {
 @media screen and (max-width: 768px) {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
-	}
 
+	}
+#vidDiv { float:left;
+
+}
 
 }
 
