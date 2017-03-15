@@ -14,9 +14,14 @@
 	text-align: center;
 	padding: 0px 0px 10px 0px;
 }
-.dropdown-toggle{
+
+#login{
 	float: left;
 	margin: 0px 0px 0px 30px;
+}
+.dropdown-toggle{
+	float: left;
+	margin: 0px 0px 0px 10px;
 
 }
 #currentMood{

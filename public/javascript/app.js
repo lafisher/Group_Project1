@@ -38,6 +38,9 @@ $('#login').on('click', function(userId, database){
 $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
     $('#currentMood').html("Today's Mood: " + ($(this).text()));
+    $('#gifDiv').html('');
+    $('#vidDiv').html('');
+
 });
 
 // on click verifies correct date format is used and mood/data/commets are added to firebase
