@@ -8,32 +8,30 @@ var config = {
     };
 
 firebase.initializeApp(config);
-    firebase.auth().getRedirectResult().then(function(result) {
-        if (result.credential) {
-           // This gives you a Google Access Token. You can use it to access the Google API.
-           var token = result.credential.accessToken;
-           // ...
-         }
-         // The signed-in user info.
-         var user = result.user;
-        }).catch(function(error) {
-         // Handle Errors here.
-         var errorCode = error.code;
-         var errorMessage = error.message;
-         // The email of the user's account used.
-         var email = error.email;
-         // The firebase.auth.AuthCredential type that was used.
-         var credential = error.credential;
-         // ...
-    });
+
+firebase.auth().getRedirectResult().then(function(result) {
+    if (result.credential) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+    }
+    // The signed-in user info.
+    var user = result.user;
+    tableBuild();
+    }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+});
+
 // click event for user loging, uses google accout stores user accout id in userId variable for later use
-// initalizes firebase db and calls tableBuild function to display stored user input
 $('#login').on('click', function(userId, database){
     event.preventDefault();
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider);
-    var userId = firebase.auth().currentUser.uid;
-    var database = firebase.database();
 });
 
 // mood dropdown menu conrtol
@@ -51,19 +49,13 @@ $("#addMoodButton").on("click", function(){
     if (validDate) {
         $('.alert-danger').hide();
         var mood = $('#currentMood').val();
-        console.log(mood);
         giphy(mood);
-        displayVideo(mood);
-        // firebaseMood(mood);
-        tableBuild();
-        // firebaseMood(mood, url);
-        
+        displayVideo(mood);        
     } else {
         $('.alert-danger').show()
         $('#date-input').val('');
     }
 });
-
 
 function tableBuild(){
     var database = firebase.database();
@@ -72,54 +64,53 @@ function tableBuild(){
         var tblRow = $('<tr>');
         var urlLoggedVidLink = $("<href>");
         urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
-        console.log(urlLoggedVidLink);
         tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
         tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
         tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
         tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
         $("#moodTable").append(tblRow);
         }, function(errorObj){
-        console.log("Error: " + errorObj.code);
+            console.log("Error: " + errorObj.code);
     });
-};
+}//END tableBuild
 
 // Leigh's code for css change //
-        //happy
-    $("#happy").click(function(){
-        $(".jumbotron").css("background-color", "#2e5bce");
-        $("#currentMood").css("background-color", "#f8f7be");
-        $("#addMoodButton").css("background-color", "#f8f7be");
-        $(".panel-heading").css("background-color", "#f8f7be");
-        //$(".body").css("background-image: url", "../images/newjoy.jpg");
-    });
-    $("#sad").click(function(){
-        $(".jumbotron").css("background-color", "#044f67");
-        $("#currentMood").css("background-color", "#37bc9b");
-        $("#addMoodButton").css("background-color", "#37bc9b");
-        $(".panel-heading").css("background-color", "#37bc9b");
-        //$(".body").css("background-image: url", "../images/newsadness.jpg");
-    });
-    $("#mad").click(function(){
-        $(".jumbotron").css("background-color", "#800a0a"); 
-        $("#currentMood").css("background-color", "#d93013");
-        $("#addMoodButton").css("background-color", "#d93013");
-        $(".panel-heading").css("background-color", "#d93013");
-        //$(".body").css("background-image: url", "../images/newanger.jpg");
-    });
-    $("#excited").click(function(){
-        $(".jumbotron").css("background-color", "#fdcd4f");
-        $("#currentMood").css("background-color", "#a22678");
-        $("#addMoodButton").css("background-color", "#a22678");
-        $(".panel-heading").css("background-color", "#a22678");
-        //$(".body").css("background-image: url", "../images/newbingbong.jpg");
-    });
-    $("#tired").click(function(){
-        $(".jumbotron").css("background-color", "#034002");
-        $("#currentMood").css("background-color", "#A0D468");
-        $("#addMoodButton").css("background-color", "#A0D468");
-        $(".panel-heading").css("background-color", "#A0D468");
-        //$(".body").css("background-image: url", "../images/newdisgust.jpg");
-    });
+//happy
+$("#happy").click(function(){
+    $(".jumbotron").css("background-color", "#2e5bce");
+    $("#currentMood").css("background-color", "#f8f7be");
+    $("#addMoodButton").css("background-color", "#f8f7be");
+    $(".panel-heading").css("background-color", "#f8f7be");
+    //$(".body").css("background-image: url", "../images/newjoy.jpg");
+});
+$("#sad").click(function(){
+    $(".jumbotron").css("background-color", "#044f67");
+    $("#currentMood").css("background-color", "#37bc9b");
+    $("#addMoodButton").css("background-color", "#37bc9b");
+    $(".panel-heading").css("background-color", "#37bc9b");
+    //$(".body").css("background-image: url", "../images/newsadness.jpg");
+});
+$("#mad").click(function(){
+    $(".jumbotron").css("background-color", "#800a0a"); 
+    $("#currentMood").css("background-color", "#d93013");
+    $("#addMoodButton").css("background-color", "#d93013");
+    $(".panel-heading").css("background-color", "#d93013");
+    //$(".body").css("background-image: url", "../images/newanger.jpg");
+});
+$("#excited").click(function(){
+    $(".jumbotron").css("background-color", "#fdcd4f");
+    $("#currentMood").css("background-color", "#a22678");
+    $("#addMoodButton").css("background-color", "#a22678");
+    $(".panel-heading").css("background-color", "#a22678");
+    //$(".body").css("background-image: url", "../images/newbingbong.jpg");
+});
+$("#tired").click(function(){
+    $(".jumbotron").css("background-color", "#034002");
+    $("#currentMood").css("background-color", "#A0D468");
+    $("#addMoodButton").css("background-color", "#A0D468");
+    $(".panel-heading").css("background-color", "#A0D468");
+    //$(".body").css("background-image: url", "../images/newdisgust.jpg");
+});
 //end leigh's code
 
 // function to push data to firebase
@@ -142,31 +133,28 @@ function firebaseMood(mood, url, userId, database){
         loggedVidLink: loggedVidLink,
         loggedComment: loggedComment
     });
-
-};
+}//END firebaseMood
 
 //Giphy function 
 function giphy(mood){
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
 
-$.ajax({                     
-        url: queryURL,
-        method: "GET"
-    })
-    .done(function(response) { 
-        var results = response.data;
-        var moodGif = $("<img>");
-        moodGif.attr("src", results[0].images.original.url);
-        moodGif.attr("id", "gif-img");
-        $("#gifDiv").html(moodGif);   
-    });
-};
-////////////////////////////////// Shawn's Code //////////////////////////////////
+    $.ajax({                     
+            url: queryURL,
+            method: "GET"
+        })
+        .done(function(response) { 
+            var results = response.data;
+            var moodGif = $("<img>");
+            moodGif.attr("src", results[0].images.original.url);
+            moodGif.attr("id", "gif-img");
+            $("#gifDiv").html(moodGif);   
+        });
+}//END giphy
 
 // used to call youtube API to grab video IDs based on playlist ID and display on page
 function displayVideo(mood) {
 
-    console.log(mood);
     var playlistId;
 
     if (mood == 'Happy') {
@@ -189,7 +177,6 @@ function displayVideo(mood) {
         url: queryURL,
         query: 'GET'
     }).done(function(response) {
-        console.log(response);
         for (var i = 0; i < response.items.length; i++) {
             videoIdArray.push(response.items[i].snippet.resourceId.videoId);   
         }
@@ -198,7 +185,6 @@ function displayVideo(mood) {
 
         //call displayVideo function with a random video id
         videoId = videoIdArray[randomNum];
-        console.log(videoIdArray);
 
         //iframe html element to hold youtube video
         var iframe = $('<iframe>');
@@ -208,41 +194,6 @@ function displayVideo(mood) {
         iframe.attr("src", url);
         $('#vidDiv').html(iframe);
 
-       firebaseMood(mood, url);
+         firebaseMood(mood, url);
     });
-}
-
-// function to be called to display a random video from the array of playlist ids pulled from YouTube API
-// function displayVideo(mood, vidId) {
-//     //iframe html element to hold youtube video
-//     var iframe = $('<iframe>');
-//     iframe.attr('id', 'youtube-frame');
-//     //URL to be used to display the specifc video
-//     var url = 'https://www.youtube.com/embed/' + vidId;
-//     iframe.attr("src", url);
-//     $('#vidDiv').html(iframe);
-//     firebaseMood(mood, url);
-// }
-
-// function to take mood variable to determine playlist to send to API
-// function generatePlaylistId(mood) {
-//     var playlistId;
-//     if (mood == 'happy') {
-//         playlistId = '';
-//     } else if (mood =='sad') {
-//         playlistId = '';
-//     } else if (mood == 'mad') {
-//         playlistId = '';
-//     } else if (mood == 'excited') {
-//         playlistId = '';
-//     } else {
-//         playlistId = '';
-//     }
-
-//     apiCall(playlistId);
-// }
-
-//response.items[i].snippet.resourceId.videoId  <- thatll give us the vidId for each of the 5 songs
-// api reference to get playlistitems from playlistId:
-// https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLhGO2bt0EkwvRUioaJMLxrMNhU44lRWg8&key=AIzaSyDsKfYqK9sqfPetOx2uir2V2UhxYVqivMU
-//drop down for mood - get the value of that field and had if statement determine playlist id based on mood
+}//END displayVideo
