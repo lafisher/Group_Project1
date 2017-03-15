@@ -98,6 +98,12 @@ th {
     display: none;
 }
 
+#date-input {
+	float: left;
+	display: none;
+}
+
+
 /* mobile responsive 
 /* very basic mobile responsive */ 
 @media screen and (max-width: 980px) {

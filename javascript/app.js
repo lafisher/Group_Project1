@@ -37,7 +37,8 @@ $('#login').on('click', function(userId, database){
 // mood dropdown menu conrtol
 $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
-    $('#currentMood').html("Today's Mood: " + ($(this).text()));
+    $('#currentMood').html("Current Mood: " + ($(this).text()));
+    $('#date-input').show();
 });
 
 // on click verifies correct date format is used and mood/data/commets are added to firebase
@@ -52,7 +53,7 @@ $("#addMoodButton").on("click", function(){
         giphy(mood);
         displayVideo(mood);      
     } else {
-        $('.alert-danger').show()
+        $('.alert-danger').show();
         $('#date-input').val('');
     }
 });
