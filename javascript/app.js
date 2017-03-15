@@ -57,7 +57,7 @@ $("#addMoodButton").on("click", function(){
     }
 });
 
-<<<<<<< HEAD
+
 // Leigh's code for css change //
         //happy
     $("#happy").click(function(){
@@ -104,7 +104,7 @@ $("#addMoodButton").on("click", function(){
         $("#addMoodButton").css("background-color", "#A0D468");
         $(".panel-heading").css("background-color", "#A0D468");
         $(".main-container").css("background-image", 'url("' + backGround + '")');
-=======
+
 function tableBuild(){
     var database = firebase.database();
     var userId = firebase.auth().currentUser.uid;
@@ -122,48 +122,12 @@ function tableBuild(){
         $('#currentMood').html("Today's Mood:"); 
         }, function(errorObj){
             console.log("Error: " + errorObj.code);
->>>>>>> bd9a04cf7d4467db1b7c8fc870209a609e974926
+
     });
 }//END tableBuild
 
-// Leigh's code for css change //
-//happy
-$("#happy").click(function(){
-    $(".jumbotron").css("background-color", "#2e5bce");
-    $("#currentMood").css("background-color", "#f8f7be");
-    $("#addMoodButton").css("background-color", "#f8f7be");
-    $(".panel-heading").css("background-color", "#f8f7be");
-    //$(".body").css("background-image: url", "../images/newjoy.jpg");
-});
-$("#sad").click(function(){
-    $(".jumbotron").css("background-color", "#044f67");
-    $("#currentMood").css("background-color", "#37bc9b");
-    $("#addMoodButton").css("background-color", "#37bc9b");
-    $(".panel-heading").css("background-color", "#37bc9b");
-    //$(".body").css("background-image: url", "../images/newsadness.jpg");
-});
-$("#mad").click(function(){
-    $(".jumbotron").css("background-color", "#800a0a"); 
-    $("#currentMood").css("background-color", "#d93013");
-    $("#addMoodButton").css("background-color", "#d93013");
-    $(".panel-heading").css("background-color", "#d93013");
-    //$(".body").css("background-image: url", "../images/newanger.jpg");
-});
-$("#excited").click(function(){
-    $(".jumbotron").css("background-color", "#fdcd4f");
-    $("#currentMood").css("background-color", "#a22678");
-    $("#addMoodButton").css("background-color", "#a22678");
-    $(".panel-heading").css("background-color", "#a22678");
-    //$(".body").css("background-image: url", "../images/newbingbong.jpg");
-});
-$("#tired").click(function(){
-    $(".jumbotron").css("background-color", "#034002");
-    $("#currentMood").css("background-color", "#A0D468");
-    $("#addMoodButton").css("background-color", "#A0D468");
-    $(".panel-heading").css("background-color", "#A0D468");
-    //$(".body").css("background-image: url", "../images/newdisgust.jpg");
-});
-//end leigh's code
+
+
 
 // function to push data to firebase
 function firebaseMood(mood, url, userId, database){
