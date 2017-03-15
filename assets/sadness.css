@@ -1,9 +1,9 @@
 .jumbotron {
-	color: #77ac54;
+	color: #D2D7D3;
 	font-size: 65px;
 	text-align: center;
 	height: 250px;
-	background-color: #fdcd4f;
+	background-color: #044f67;
 	padding: 20px 0px 20px 0px; 
 }
 #really{
@@ -16,7 +16,7 @@
 
 }
 #currentMood{
-	background-color: #a22678;
+	background-color: #37bc9b;
 }
 
 .col-md-2{float: left;
@@ -43,47 +43,26 @@
 	clear: both;
 }
 body {
-	background-image: url("../images/newbingbong.jpg");
+	background-image: url("../images/sadness.jpeg");
 	
 }
 
 .panel-heading{
 	text-align: center;
-	background-color: #a22678;
+	background-color: #37bc9b;
 }
 .panel-body {
 	text-align: center;
 }
 #addMoodButton {
-	background-color: #a22678;
+	background-color: #37bc9b;
 }
+
 .row {
 	margin-left:0px; 
 	margin-right:0px;
 
 }
-
-/* very basic mobile responsive */ 
-@media screen and (max-width: 980px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
-		
-
-}
-
-@media screen and (max-width: 768px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
-
-
-}
-
-@media screen and (max-width: 640px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
 
 /***********************Shawn's Code***********************/
 
@@ -101,3 +80,4 @@ iframe {
     padding: 11px;
     display: none;
 }
+

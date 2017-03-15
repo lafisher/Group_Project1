@@ -45,6 +45,7 @@
 	text-align: center;
 	clear: both;
 }
+
 .main-container {
 	background-image: url("../images/newgroup.jpg");
 	width: 100%;
@@ -67,6 +68,7 @@
 	margin-right:0px;
 
 }
+
 
 /* very basic mobile responsive */ 
 @media screen and (max-width: 980px) {
@@ -95,6 +97,8 @@
 
 }
 
+=======
+>>>>>>> bd9a04cf7d4467db1b7c8fc870209a609e974926
 /***********************Shawn's Code***********************/
 
 iframe {

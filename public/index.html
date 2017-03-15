@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
       <!--materialize-->
       <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+      <!-- <script src="https://ajax.googleapis.com/ajax/ligit bs/jquery/2.2.2/jquery.min.js"></script> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.1.1.js"
@@ -34,7 +34,7 @@
          <div class="jumbotron">
             <div class = "row" id = "header1">
                <div class="dropdown">
-                  <button class="btn btn-normal dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Today's Mood
+                  <button class="btn btn-normal dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Current Mood
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                      <li><a href="#">Happy</a></li>
@@ -64,7 +64,7 @@
             <div class = "row" > 
 				<div class = "col-md-3"></div>
             		<div class="col-md-6">
-                    	 <input class="form-control" id="journal" placeholder="How was your day?">
+                    	 <input class="form-control" id="journal" placeholder="Tell me about your day">
                   	</div>
                 <div class = "col-md-3"></div>
             </div>
@@ -72,7 +72,7 @@
 
             <div class = "row" id = "header3">
                <button type="submit" class="btn btn-normal" id="addMoodButton">Update Mood</button>
-               <button type="submit" class="btn btn-noraml" onclick="userLogin()">Login</button>
+               <button type="submit" class="btn btn-noraml" id="login">Login</button>
             </div>
             <p></p>
          </div>
@@ -98,6 +98,7 @@
                      <th>Day</th>
                      <th>Mood</th>
                      <th>YouTube Link</th>
+                     <th>Journal Entry</th>
                   </tr>
                </thead>
                <tbody>
