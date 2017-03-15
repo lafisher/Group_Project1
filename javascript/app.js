@@ -35,7 +35,8 @@ $('#login').on('click', function(userId, database){
 });
 
 // mood dropdown menu conrtol
-$('.dropdown-menu li a').on('click', function(){
+$('.btn btn-normal dropdown-toggle').on('click', function(){
+// $('.dropdown-menu li a').on('click', function(){
     $('#currentMood').val($(this).text());
     $('#currentMood').html("Current Mood: " + ($(this).text()));
     $('#date-input').show();
