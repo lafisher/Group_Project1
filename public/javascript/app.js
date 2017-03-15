@@ -50,7 +50,7 @@ $("#addMoodButton").on("click", function(){
         $('.alert-danger').hide();
         var mood = $('#currentMood').val();
         giphy(mood);
-        displayVideo(mood);        
+        displayVideo(mood);      
     } else {
         $('.alert-danger').show()
         $('#date-input').val('');
@@ -69,6 +69,9 @@ function tableBuild(){
         tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
         tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
         $("#moodTable").append(tblRow);
+        $('#date-input').val('');
+        $('#journal').val(''); 
+        $('#currentMood').html("Today's Mood:"); 
         }, function(errorObj){
             console.log("Error: " + errorObj.code);
     });
@@ -158,7 +161,7 @@ function displayVideo(mood) {
     var playlistId;
 
     if (mood == 'Happy') {
-        playlistId = 'PL8vILzn50tszzH4CelbiUyWsTiY-3YF32'; //happy playlist on leighs youtube channel
+        playlistId = 'PL8vILzn50tsyECzBFC5UFYDnnX07TA7wX'; //happy playlist on leighs youtube channel
     } else if (mood =='Sad') {
         playlistId = 'PL8vILzn50tsyKw_P4pRtT51tokZ0OFzAL'; //sad playlist on leighs youtube channel
     } else if (mood == 'Mad') {
