@@ -43,7 +43,7 @@
 	clear: both;
 }
 body {
-	background-image: url("../images/newjoy.jpg");
+	background-image: url("../images/Inside-Out-Joy_Wallpaper-HD1.jpg");
 	
 }
 
@@ -63,28 +63,6 @@ body {
 	margin-right:0px;
 
 }
-
-/* very basic mobile responsive */ 
-@media screen and (max-width: 980px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
-		
-
-}
-
-@media screen and (max-width: 768px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
-
-
-}
-
-@media screen and (max-width: 640px) {
-	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
-		width: auto;
-	}
 
 /***********************Shawn's Code***********************/
 
