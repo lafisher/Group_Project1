@@ -55,10 +55,7 @@
 .panel-heading{
 	text-align: center;
 	background-color: #552d81;
-}
 
-#panelHead{
-	margin: 0;
 }
 .panel-body {
 	text-align: center;
@@ -107,19 +104,26 @@ th {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
 	}
+	.alert-danger{
+		float: right;
+	}	
 }
 
 @media screen and (max-width: 768px) {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
 	}
-	#vidDiv { 
-		float:left;
+
+	.alert-danger{
+		float: right;
 	}
 }
 
 @media screen and (max-width: 640px) {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
+	}
+	.alert-danger{
+		float: right;
 	}
 }
