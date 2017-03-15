@@ -104,6 +104,7 @@ $("#addMoodButton").on("click", function(){
         $("#addMoodButton").css("background-color", "#A0D468");
         $(".panel-heading").css("background-color", "#A0D468");
         $(".main-container").css("background-image", 'url("' + backGround + '")');
+    });
 
 function tableBuild(){
     var database = firebase.database();
