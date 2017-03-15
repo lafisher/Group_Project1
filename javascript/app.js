@@ -8,24 +8,26 @@ var config = {
     };
 
 firebase.initializeApp(config);
-    firebase.auth().getRedirectResult().then(function(result) {
-        if (result.credential) {
-           // This gives you a Google Access Token. You can use it to access the Google API.
-           var token = result.credential.accessToken;
-           // ...
-         }
-         // The signed-in user info.
-         var user = result.user;
-        }).catch(function(error) {
-         // Handle Errors here.
-         var errorCode = error.code;
-         var errorMessage = error.message;
-         // The email of the user's account used.
-         var email = error.email;
-         // The firebase.auth.AuthCredential type that was used.
-         var credential = error.credential;
-         // ...
-    });
+
+firebase.auth().getRedirectResult().then(function(result) {
+    if (result.credential) {
+       // This gives you a Google Access Token. You can use it to access the Google API.
+       var token = result.credential.accessToken;
+       // ...
+     }
+     // The signed-in user info.
+     var user = result.user;
+    }).catch(function(error) {
+     // Handle Errors here.
+     var errorCode = error.code;
+     var errorMessage = error.message;
+     // The email of the user's account used.
+     var email = error.email;
+     // The firebase.auth.AuthCredential type that was used.
+     var credential = error.credential;
+     // ...
+});
+
 // click event for user loging, uses google accout stores user accout id in userId variable for later use
 // initalizes firebase db and calls tableBuild function to display stored user input
 $('#login').on('click', function(userId, database){
@@ -83,42 +85,42 @@ function tableBuild(){
 };
 
 // Leigh's code for css change //
-        //happy
-    $("#happy").click(function(){
-        $(".jumbotron").css("background-color", "#2e5bce");
-        $("#currentMood").css("background-color", "#f8f7be");
-        $("#addMoodButton").css("background-color", "#f8f7be");
-        $(".panel-heading").css("background-color", "#f8f7be");
-        //$(".body").css("background-image: url", "../images/newjoy.jpg");
-    });
-    $("#sad").click(function(){
-        $(".jumbotron").css("background-color", "#044f67");
-        $("#currentMood").css("background-color", "#37bc9b");
-        $("#addMoodButton").css("background-color", "#37bc9b");
-        $(".panel-heading").css("background-color", "#37bc9b");
-        //$(".body").css("background-image: url", "../images/newsadness.jpg");
-    });
-    $("#mad").click(function(){
-        $(".jumbotron").css("background-color", "#800a0a"); 
-        $("#currentMood").css("background-color", "#d93013");
-        $("#addMoodButton").css("background-color", "#d93013");
-        $(".panel-heading").css("background-color", "#d93013");
-        //$(".body").css("background-image: url", "../images/newanger.jpg");
-    });
-    $("#excited").click(function(){
-        $(".jumbotron").css("background-color", "#fdcd4f");
-        $("#currentMood").css("background-color", "#a22678");
-        $("#addMoodButton").css("background-color", "#a22678");
-        $(".panel-heading").css("background-color", "#a22678");
-        //$(".body").css("background-image: url", "../images/newbingbong.jpg");
-    });
-    $("#tired").click(function(){
-        $(".jumbotron").css("background-color", "#034002");
-        $("#currentMood").css("background-color", "#A0D468");
-        $("#addMoodButton").css("background-color", "#A0D468");
-        $(".panel-heading").css("background-color", "#A0D468");
-        //$(".body").css("background-image: url", "../images/newdisgust.jpg");
-    });
+//happy
+$("#happy").click(function(){
+    $(".jumbotron").css("background-color", "#2e5bce");
+    $("#currentMood").css("background-color", "#f8f7be");
+    $("#addMoodButton").css("background-color", "#f8f7be");
+    $(".panel-heading").css("background-color", "#f8f7be");
+    //$(".body").css("background-image: url", "../images/newjoy.jpg");
+});
+$("#sad").click(function(){
+    $(".jumbotron").css("background-color", "#044f67");
+    $("#currentMood").css("background-color", "#37bc9b");
+    $("#addMoodButton").css("background-color", "#37bc9b");
+    $(".panel-heading").css("background-color", "#37bc9b");
+    //$(".body").css("background-image: url", "../images/newsadness.jpg");
+});
+$("#mad").click(function(){
+    $(".jumbotron").css("background-color", "#800a0a"); 
+    $("#currentMood").css("background-color", "#d93013");
+    $("#addMoodButton").css("background-color", "#d93013");
+    $(".panel-heading").css("background-color", "#d93013");
+    //$(".body").css("background-image: url", "../images/newanger.jpg");
+});
+$("#excited").click(function(){
+    $(".jumbotron").css("background-color", "#fdcd4f");
+    $("#currentMood").css("background-color", "#a22678");
+    $("#addMoodButton").css("background-color", "#a22678");
+    $(".panel-heading").css("background-color", "#a22678");
+    //$(".body").css("background-image: url", "../images/newbingbong.jpg");
+});
+$("#tired").click(function(){
+    $(".jumbotron").css("background-color", "#034002");
+    $("#currentMood").css("background-color", "#A0D468");
+    $("#addMoodButton").css("background-color", "#A0D468");
+    $(".panel-heading").css("background-color", "#A0D468");
+    //$(".body").css("background-image: url", "../images/newdisgust.jpg");
+});
 //end leigh's code
 
 // function to push data to firebase
@@ -153,19 +155,19 @@ function firebaseMood(mood, url, userId, database){
 
 //Giphy function 
 function giphy(mood){
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=dc6zaTOxFJmzC&limit=4";
 
-$.ajax({                     
-        url: queryURL,
-        method: "GET"
-    })
-    .done(function(response) { 
-        var results = response.data;
-        var moodGif = $("<img>");
-        moodGif.attr("src", results[0].images.original.url);
-        moodGif.attr("id", "gif-img");
-        $("#gifDiv").html(moodGif);   
-    });
+    $.ajax({                     
+            url: queryURL,
+            method: "GET"
+        })
+        .done(function(response) { 
+            var results = response.data;
+            var moodGif = $("<img>");
+            moodGif.attr("src", results[0].images.original.url);
+            moodGif.attr("id", "gif-img");
+            $("#gifDiv").html(moodGif);   
+        });
 };
 ////////////////////////////////// Shawn's Code //////////////////////////////////
 
