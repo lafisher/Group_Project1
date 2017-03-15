@@ -45,8 +45,9 @@
 	text-align: center;
 	clear: both;
 }
-body {
-	background-image: url("../images/Inside-Out.jpg");
+
+.main-container {
+	background-image: url("../images/newgroup.jpg");
 	width: 100%;
 	
 }
@@ -68,6 +69,36 @@ body {
 
 }
 
+
+/* very basic mobile responsive */ 
+@media screen and (max-width: 980px) {
+	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
+		width: auto;
+	}
+		
+
+}
+
+@media screen and (max-width: 768px) {
+	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
+		width: auto;
+
+	}
+#vidDiv { float:left;
+
+}
+
+}
+
+@media screen and (max-width: 640px) {
+	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
+		width: auto;
+	}
+
+}
+
+=======
+>>>>>>> bd9a04cf7d4467db1b7c8fc870209a609e974926
 /***********************Shawn's Code***********************/
 
 iframe {
