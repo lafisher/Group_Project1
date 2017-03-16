@@ -1,5 +1,4 @@
-window.onload = function(){
-    $('#myModal').modal('show');
+
 
 
     // firebase initialize for table database
@@ -224,4 +223,4 @@ window.onload = function(){
              firebaseMood(mood, url);
         });
     }//END displayVideo
-};
+
