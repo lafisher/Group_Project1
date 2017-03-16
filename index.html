@@ -10,9 +10,9 @@
       <!-- <script src="https://ajax.googleapis.com/ajax/ligit bs/jquery/2.2.2/jquery.min.js"></script> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.1.1.js"
+<!--       <script src="https://code.jquery.com/jquery-3.1.1.js"
          integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-         crossorigin="anonymous"></script>
+         crossorigin="anonymous"></script> -->
       <script type="text/javascript" src="javascript/moment.js"></script>
       <!--bootflat the new css framework-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
       <div class = "main-container">
          <div class="jumbotron">
             <div class = "row" id = "header1">
-               <button type="submit" class="btn btn-normal" id="login">Login</button>
+               <!-- <button type="submit" class="btn btn-normal" id="login">Login</button> -->
                <div class="dropdown">
                   <button class="btn btn-normal dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Choose Mood
                   <span class="caret"></span></button>
@@ -95,6 +95,22 @@
                </table>
             </div>
          </div>
+         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <h4 class="modal-title">Please login to track your mood</h4>
+               </div>
+               <div class="modal-body">
+                 <button type="submit" class="btn btn-normal" id="login">Login</button>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+             </div><!-- /.modal-content -->
+           </div><!-- /.modal-dialog -->
+         </div><!-- /.modal -->
       </div>
       <script type="text/javascript" src="javascript/app.js"></script>
    </body>

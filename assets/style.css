@@ -15,10 +15,10 @@
 	padding: 0px 0px 10px 0px;
 }
 
-#login{
+/*#login{
 	float: left;
 	margin: 0px 0px 0px 30px;
-}
+}*/
 .dropdown-toggle{
 	float: left;
 	margin: 0px 0px 0px 10px;
@@ -107,6 +107,34 @@ th {
 	float: left;
 	display: none;
 }
+
+/*modal Code*/
+
+.modal-header {
+    border-bottom: solid thin;
+}
+
+.modal-backdrop {
+	z-index: 1;
+}
+
+.modal-title {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+.modal-body {
+	text-align: center;
+}
+
+#login {
+	margin-top: 20px;
+	width: 200px;
+	height: 50px;
+	background-color: green;
+}
+
+/*END modal Code*/
 
 
 /* mobile responsive */ 

@@ -6,16 +6,14 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <!-- Optional theme -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-      
       <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
       <!-- <script src="https://ajax.googleapis.com/ajax/ligit bs/jquery/2.2.2/jquery.min.js"></script> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.1.1.js"
+<!--       <script src="https://code.jquery.com/jquery-3.1.1.js"
          integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-         crossorigin="anonymous"></script>
+         crossorigin="anonymous"></script> -->
       <script type="text/javascript" src="javascript/moment.js"></script>
-      
       <!--bootflat the new css framework-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
       <script src="https://bootflat.github.io/bootflat/js/icheck.min.js"></script>
@@ -24,12 +22,12 @@
       <link rel="stylesheet" href="https://bootflat.github.io/bootflat/css/bootflat.css">
       <link rel="stylesheet" type="text/css" href="assets/reset.css">
       <link rel="stylesheet" type="text/css" href="assets/style.css">
-  
    </head>
    <body>
       <div class = "main-container">
          <div class="jumbotron">
             <div class = "row" id = "header1">
+               <!-- <button type="submit" class="btn btn-normal" id="login">Login</button> -->
                <div class="dropdown">
                   <button class="btn btn-normal dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Choose Mood
                   <span class="caret"></span></button>
@@ -52,24 +50,18 @@
                   </div>
                </div>
             </div>
-          
-            
             <div class = "row" id = "header2">
                <h1 id = "really"> Hooked on a Feeling </h1>
             </div>
-
-            <div class = "row" > 
-				<div class = "col-md-3"></div>
-            		<div class="col-md-6">
-                    	 <input class="form-control" id="journal" placeholder="How was your day?">
-                  	</div>
-                <div class = "col-md-3"></div>
+            <div class = "row" >
+               <div class = "col-md-3"></div>
+               <div class="col-md-6">
+                  <input class="form-control" id="journal" placeholder="Optional: Short journal entry or comment about your mood">
+               </div>
+               <div class = "col-md-3"></div>
             </div>
-
-
             <div class = "row" id = "header3">
                <button type="submit" class="btn btn-normal" id="addMoodButton">Update Mood</button>
-               <button type="submit" class="btn btn-normal" id="login">Login</button>
             </div>
             <p></p>
          </div>
@@ -79,30 +71,46 @@
             <div class = "col-lg-6" id = "vidDiv">
             </div>
          </div>
-      <!--</div>-->
-      <div class = "row">
-         <div class = "col-lg-12">
+         <!--</div>-->
+         <div class = "row">
+            <div class = "col-lg-12">
+            </div>
          </div>
-      </div>
-      <div class="panel panel-normal" id = "panelHead">
-         <div class="panel-heading">
-            <h3 class="panel-title"><strong>Mood History</strong></h3>
+         <div class="panel panel-normal" id = "panelHead">
+            <div class="panel-heading">
+               <h3 class="panel-title"><strong>Mood History</strong></h3>
+            </div>
+            <div class="panel-body">
+               <table class="table table-hover" id="moodTable">
+                  <thead>
+                     <tr>
+                        <th>Day</th>
+                        <th>Mood</th>
+                        <th>YouTube Link</th>
+                        <th>Journal Entry</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+               </table>
+            </div>
          </div>
-         <div class="panel-body">
-            <table class="table table-hover" id="moodTable">
-               <thead>
-                  <tr>
-                     <th>Day</th>
-                     <th>Mood</th>
-                     <th>YouTube Link</th>
-                     <th>Journal Entry</th>
-                  </tr>
-               </thead>
-               <tbody>
-               </tbody>
-            </table>
-         </div>
-      </div>
+         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <h4 class="modal-title">Please login to track your mood</h4>
+               </div>
+               <div class="modal-body">
+                 <button type="submit" class="btn btn-normal" id="login">Login</button>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+             </div><!-- /.modal-content -->
+           </div><!-- /.modal-dialog -->
+         </div><!-- /.modal -->
       </div>
       <script type="text/javascript" src="javascript/app.js"></script>
    </body>
