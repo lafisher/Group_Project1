@@ -73,7 +73,6 @@
 .row {
 	margin-left:0px; 
 	margin-right:0px;
-
 }
 
 iframe {
@@ -110,8 +109,7 @@ th {
 }
 
 
-/* mobile responsive 
-/* very basic mobile responsive */ 
+/* mobile responsive */ 
 @media screen and (max-width: 980px) {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
