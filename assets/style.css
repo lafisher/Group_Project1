@@ -9,6 +9,13 @@
 	background-color: #552d81;
 	padding: 20px 0px 20px 0px; 
 }
+#header1{
+	text-align: left;
+	margin-left: 12px;
+}
+#journal{
+	width: 100%;
+}
 #really{
 	font-size: 85px;
 	text-align: center;
@@ -26,9 +33,12 @@
 
 #currentMood{
 	background-color: #330252;
+	margin-left: 0px;
 }
 
-.col-md-2{float: left;
+.col-md-2{
+	float: left;
+	text-align: left;
 	
 }
 .col-lg-6{
@@ -67,6 +77,7 @@
 }
 #addMoodButton {
 	background-color: #330252;
+	vertical-align: top;
 }
 
 .row {

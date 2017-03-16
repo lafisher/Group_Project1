@@ -20,6 +20,8 @@
         // The signed-in user info.
         var user = result.user;
         tableBuild();
+        $('#startBtn').html("Sign-Out");
+        $('#startBtn').attr("class", "btn btn-danger btn");
         }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -38,8 +40,8 @@
     });
 
     // mood dropdown menu conrtol
-    $('.btn btn-normal dropdown-toggle').on('click', function(){
-    // $('.dropdown-menu li a').on('click', function(){
+    // $('#currentMood').on('click', function(){
+    $('.dropdown-menu li a').on('click', function(){
         $('#currentMood').val($(this).text());
         $('#currentMood').html("Current Mood: " + ($(this).text()));
         $('#date-input').show();

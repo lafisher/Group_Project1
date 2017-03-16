@@ -27,9 +27,9 @@
     <div class="main-container">
         <div class="jumbotron">
             <div class="row" id="header1">
+               <div class="col-md-1">
                 <!-- Modal start -->
-                <button type="button" class="btn btn-primary btn-large" data-toggle="modal" data-target="#myModal" data-backdrop="false">Start Here</button>
-
+                <button type="button" class="btn btn-primary btn" id="startBtn" data-toggle="modal" data-target="#myModal" data-backdrop="false">Start Here</button>
                 <div class="modal" id="myModal" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -38,7 +38,7 @@
                                 <h4 class="modal-title">Hooked on a feeling Login</h4>
                             </div>
                             <div class="modal-body">
-                                <p>Loging in will allow you to track you daily mood, your info will be stored and you will able to recall your journal wil each login. You mus have a Gamil account to login.</p>
+                                <p>Loging in will allow you to track you daily mood, your info will be stored and you will able to recall your journal with each login. You must have a Gamil account to login.</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -49,8 +49,15 @@
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
+             </div>
+             <div class="col-md-11">
                 <!-- /.modal -->
-
+            <!-- </div>
+            <div class="row" id="header2"> -->
+                <h1 id="really"> Hooked on a Feeling </h1>
+            </div>
+         </div>
+            <div class="row">
                 <div class="dropdown">
                     <button class="btn btn-normal dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Choose Mood
                         <span class="caret"></span></button>
@@ -72,20 +79,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row" id="header2">
-                <h1 id="really"> Hooked on a Feeling </h1>
-            </div>
-            <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <input class="form-control" id="journal" placeholder="How was your day?">
                 </div>
-                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-normal" id="addMoodButton">Update Mood</button>
+                </div>
+                <div class="col-md-2"></div>
             </div>
-            <div class="row" id="header3">
+            <!-- <div class="row" id="header3">
                 <button type="submit" class="btn btn-normal" id="addMoodButton">Update Mood</button>
-            </div>
+            </div> -->
             <p></p>
         </div>
         <div class="row">
