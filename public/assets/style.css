@@ -17,7 +17,6 @@
 
 #signOut{
 	display: none;
-	text-align: right;
 	vertical-align: top;
 }
 #signOutDiv{
@@ -38,19 +37,14 @@
 }
 
 .col-lg-6{
-	text-align: center;
 	height: 400px;
-	width: 640px;
 }
+
 #gifDiv{
-	float: left;
 	background-color: transparent;
-	margin: 0px 0px 10px 20px;
 }
 #vidDiv{
-	float: right;
 	background-color: transparent;
-	margin: 0px 20px 10px 0px;
 }
 .col-lg-12{
 	text-align: center;
@@ -81,8 +75,6 @@
 }
 
 iframe {
-	width: 640px;
-	height: 390px;
 	width: 100%;
 	height: 100%;
 	padding: 10px;
@@ -149,7 +141,12 @@ th {
 	}
 	.alert-danger{
 		float: right;
-	}	
+	}
+.col-lg-6{
+	height: 400px;
+	width: 540px;
+ }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -158,8 +155,11 @@ th {
 	}
 
 	.alert-danger{
-		float: right;
+		float: left;
 	}
+.col-lg-6 {
+	height: 400px;
+	width: 440px;
 }
 
 @media screen and (max-width: 640px) {
@@ -167,6 +167,9 @@ th {
 		width: auto;
 	}
 	.alert-danger{
-		float: right;
+		float: left;
 	}
+.col-lg-6 {
+	height: 400px;
+	width: 340px;
 }
