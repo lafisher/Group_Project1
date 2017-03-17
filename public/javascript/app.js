@@ -40,14 +40,15 @@ $(document).ready(function() {
     $('#signOut').on('click', function(){
         event.preventDefault();
         firebase.auth().signOut().then(function() {
-          // Sign-out successful.
-            }).catch(function(error) {
-              // An error happened.
-            });
-        $('#signOut').hide();
-        $('#tbody').html('');
-
-    })
+            // Sign-out successful.
+            $('#signOut').hide();
+            $('#tbody').html('');
+            $('#gifDiv').html('');
+            $('#vidDiv').html('');
+        }).catch(function(error) {
+            // An error happened.
+        });
+    });
 
     // mood dropdown menu control
     $('.dropdown-menu li a').on('click', function(){
@@ -71,9 +72,8 @@ $(document).ready(function() {
             giphy(mood);
             displayVideo(mood);      
         } else {
-            // $('.alert-danger').show();
             $('#date-input').addClass('invalid-date');
-            $('#date-input').attr('placeholder', 'Invalid Entry - vaild format DD/MM/YYYY');
+            $('#date-input').attr('placeholder', 'Invalid Entry - valid format DD/MM/YYYY');
             $('#date-input').val('');
         }
     });
@@ -142,7 +142,7 @@ $(document).ready(function() {
             urlLoggedVidLink.attr("href", childSnapShot.val().loggedVidLink);
             tblRow.append('<td>' + childSnapShot.val().loggedDate + '</td>');
             tblRow.append('<td>' + childSnapShot.val().loggedMood + '</td>');
-            tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">YouTube Link</a></td>");
+            tblRow.append('<td>' + "<a href=" + childSnapShot.val().loggedVidLink + ">" + childSnapShot.val().loggedVidTitle + "</a></td>");
             tblRow.append('<td>' + childSnapShot.val().loggedComment + '</td>');
             $("#moodTable").append(tblRow);
             $('#date-input').val('');
@@ -154,23 +154,27 @@ $(document).ready(function() {
     }//END tableBuild
 
     // function to push data to firebase
-    function firebaseMood(mood, url, userId, database){
+    function firebaseMood(mood, url, title, userId, database){
 
         var userId = firebase.auth().currentUser.uid;
         var loggedDate = "";                       
         var loggedMood = "";
         var loggedVidLink = "";
+        var loggedVidTitle = "";
         var loggedComment = "";
+
 
         loggedDate = $("#date-input").val().trim();
         loggedMood = mood;
         loggedVidLink = url;
+        loggedVidTitle = title;
         loggedComment = $("#journal").val().trim();
 
         firebase.database().ref('user/' + userId).push({
             loggedDate: loggedDate,
             loggedMood: loggedMood,
             loggedVidLink: loggedVidLink,
+            loggedVidTitle: loggedVidTitle,
             loggedComment: loggedComment
         });
     }//END firebaseMood
@@ -194,7 +198,6 @@ $(document).ready(function() {
 
     // used to call youtube API to grab video IDs based on playlist ID and display on page
     function displayVideo(mood) {
-
         var playlistId;
 
         if (mood == 'Happy') {
@@ -218,24 +221,27 @@ $(document).ready(function() {
             query: 'GET'
         }).done(function(response) {
             for (var i = 0; i < response.items.length; i++) {
-                videoIdArray.push(response.items[i].snippet.resourceId.videoId);   
+                videoIdArray.push({
+                    vidId: response.items[i].snippet.resourceId.videoId,
+                    vidTitle: response.items[i].snippet.title
+                });
             }
 
             var randomNum = Math.floor(Math.random() * videoIdArray.length); //random number to grab a random video id from the array
 
             //call displayVideo function with a random video id
-            videoId = videoIdArray[randomNum];
+            var video = videoIdArray[randomNum];
 
             //iframe html element to hold youtube video
             var iframe = $('<iframe>');
             iframe.attr('id', 'youtube-frame');
 
             //URL to be used to display the specifc video
-            var url = 'https://www.youtube.com/embed/' + videoId;
+            var url = 'https://www.youtube.com/embed/' + video.vidId;
             iframe.attr("src", url);
             $('#vidDiv').html(iframe);
 
-             firebaseMood(mood, url);
+             firebaseMood(mood, url, video.vidTitle);
         });
     }//END displayVideo
 
