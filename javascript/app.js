@@ -16,6 +16,7 @@ $(document).ready(function() {
         if (user) {
             $('#login-modal').modal('hide');
             tableBuild();
+            $('#signOut').show();
         } else {
             $('#login-modal').modal({
                 backdrop: 'static'
@@ -30,6 +31,18 @@ $(document).ready(function() {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithRedirect(provider);
     });
+
+    $('#signOut').on('click', function(){
+        event.preventDefault();
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+            }).catch(function(error) {
+              // An error happened.
+            });
+        $('#signOut').hide();
+        $('#tbody').html('');
+
+    })
 
     // mood dropdown menu control
     $('.dropdown-menu li a').on('click', function(){

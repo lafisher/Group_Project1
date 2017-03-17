@@ -10,9 +10,6 @@
       <!-- <script src="https://ajax.googleapis.com/ajax/ligit bs/jquery/2.2.2/jquery.min.js"></script> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!--       <script src="https://code.jquery.com/jquery-3.1.1.js"
-         integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-         crossorigin="anonymous"></script> -->
       <script type="text/javascript" src="javascript/moment.js"></script>
       <!--bootflat the new css framework-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -27,27 +24,31 @@
       <div class = "main-container">
          <div class="jumbotron">
             <div class = "row" id = "header1">
-               <!-- <button type="submit" class="btn btn-normal" id="login">Login</button> -->
-               <div class="dropdown">
-                  <button class="btn btn-normal dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Choose Mood
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                     <li><a id ="happy">Happy</a></li>
-                     <li><a id ="sad">Sad</a></li>
-                     <li><a id ="mad">Mad</a></li>
-                     <li><a id ="excited">Excited</a></li>
-                     <li><a id ="tired">Tired</a></li>
-                  </ul>
-               </div>
-               <div class="form-group row">
-                  <div class="col-md-2">
-                     <input class="form-control" id="date-input" placeholder=" Enter Date MM/DD/YYYY">
+               <div class="col-md-6">
+                  <div class="dropdown">
+                     <button class="btn btn-normal dropdown-toggle" id="currentMood" value="Mood" type="button" data-toggle="dropdown">Choose Mood
+                     <span class="caret"></span></button>
+                     <ul class="dropdown-menu">
+                        <li><a id ="happy">Happy</a></li>
+                        <li><a id ="sad">Sad</a></li>
+                        <li><a id ="mad">Mad</a></li>
+                        <li><a id ="excited">Excited</a></li>
+                        <li><a id ="tired">Tired</a></li>
+                     </ul>
                   </div>
-                  <div class="col-md-4">
-                     <div class="alert alert-danger" role="alert">
-                        The date input is invalid. Please enter a valid date in "MM/DD/YYYY" format.
+                  <div class="form-group row">
+                     <div class="col-md-2">
+                        <input class="form-control" id="date-input" placeholder=" Enter Date MM/DD/YYYY">
+                     </div>
+                     <div class="col-md-4">
+                        <div class="alert alert-danger" role="alert">
+                           The date input is invalid. Please enter a valid date in "MM/DD/YYYY" format.
+                        </div>
                      </div>
                   </div>
+               </div>
+               <div class="col-md-6" id="signOutDiv">
+                <button type="submit" class="btn btn-danger" id="signOut">Sign Out</button>
                </div>
             </div>
             <div class = "row" id = "header2">
@@ -90,7 +91,7 @@
                         <th>Journal Entry</th>
                      </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tbody">
                   </tbody>
                </table>
             </div>

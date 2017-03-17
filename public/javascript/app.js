@@ -11,10 +11,12 @@ $(document).ready(function() {
 
     firebase.initializeApp(config);
 
+    //check if there is a current user to show or hide modal
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             $('#login-modal').modal('hide');
             tableBuild();
+            $('#signOut').show();
         } else {
             $('#login-modal').modal({
                 backdrop: 'static'
@@ -29,6 +31,18 @@ $(document).ready(function() {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithRedirect(provider);
     });
+
+    $('#signOut').on('click', function(){
+        event.preventDefault();
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+            }).catch(function(error) {
+              // An error happened.
+            });
+        $('#signOut').hide();
+        $('#tbody').html('');
+
+    })
 
     // mood dropdown menu control
     $('.dropdown-menu li a').on('click', function(){
