@@ -15,6 +15,14 @@
 	padding: 0px 0px 10px 0px;
 }
 
+#signOut{
+	display: none;
+	vertical-align: top;
+}
+#signOutDiv{
+	text-align: right;
+}
+
 .dropdown-toggle{
 	float: left;
 	margin: 0px 0px 0px 10px;
@@ -149,7 +157,7 @@ th {
 	}
 
 	.alert-danger{
-		float: right;
+		float: left;
 	}
 }
 
@@ -158,6 +166,6 @@ th {
 		width: auto;
 	}
 	.alert-danger{
-		float: right;
+		float: left;
 	}
 }

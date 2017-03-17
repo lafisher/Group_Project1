@@ -15,10 +15,15 @@
 	padding: 0px 0px 10px 0px;
 }
 
-/*#login{
-	float: left;
-	margin: 0px 0px 0px 30px;
-}*/
+#signOut{
+	display: none;
+	text-align: right;
+	vertical-align: top;
+}
+#signOutDiv{
+	text-align: right;
+}
+
 .dropdown-toggle{
 	float: left;
 	margin: 0px 0px 0px 10px;
@@ -28,8 +33,8 @@
 	background-color: #330252;
 }
 
-.col-md-2{float: left;
-	
+.col-md-2{
+	float: left;
 }
 
 .col-lg-6{
