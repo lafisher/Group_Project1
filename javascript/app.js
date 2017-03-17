@@ -84,9 +84,9 @@ $(document).ready(function() {
     $("#happy").click(function(){
         var backGround = "images/newjoy.jpg";
         $(".jumbotron").css("background-color", "#2e5bce");
-        $("#currentMood").css("background-color", "#f8f7be");
-        $("#addMoodButton").css("background-color", "#f8f7be");
-        $(".panel-heading").css("background-color", "#f8f7be");
+        $("#currentMood").css("background-color", "#ffb202");
+        $("#addMoodButton").css("background-color", "#ffb202");
+        $(".panel-heading").css("background-color", "#ffb202");
         $(".main-container").css("background-image", 'url("' + backGround + '")');
 
     });

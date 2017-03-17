@@ -4,9 +4,9 @@
 
 .jumbotron {
 	color: #D2D7D3;
-	font-size: 65px;
+	font-size: 60px;
 	text-align: center;
-	height: 275px;
+	height: 310px;
 	background-color: #552d81;
 	padding: 20px 0px 20px 0px; 
 }
@@ -65,7 +65,7 @@
 
 .panel-heading {
 	text-align: center;
-	background-color: #552d81;
+	background-color: #8c6aaa;
 }
 
 .panel-body {
@@ -110,6 +110,11 @@ th {
 #date-input {
 	float: left;
 	display: none;
+}
+
+.subtitle {
+	text-align: center;
+	font-size: 12pt
 }
 
 /*modal Code*/
