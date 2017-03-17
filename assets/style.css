@@ -99,8 +99,12 @@ th {
 
 /*modal Code*/
 
+
 .modal-header {
     border-bottom: solid thin;
+    text-align: center;
+    background-color: black; 
+    color: white;
 }
 
 .modal-backdrop {
@@ -114,13 +118,18 @@ th {
 
 .modal-body {
 	text-align: center;
+	background-color: black; 
 }
 
 #login {
 	margin-top: 20px;
 	width: 200px;
 	height: 50px;
-	background-color: green;
+	background-color: #8c6aaa;
+}
+
+.modal-footer{
+	background-image: url("../images/modal_image.jpg");
 }
 
 /*END modal Code*/
