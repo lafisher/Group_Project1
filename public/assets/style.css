@@ -1,58 +1,59 @@
-.main-container{
+.main-container {
 	width: 100%;
 }
+
 .jumbotron {
 	color: #D2D7D3;
-	font-size: 65px;
+	font-size: 60px;
 	text-align: center;
-	height: 275px;
+	height: 310px;
 	background-color: #552d81;
 	padding: 20px 0px 20px 0px; 
 }
-#really{
+
+#really {
 	font-size: 85px;
 	text-align: center;
 	padding: 0px 0px 10px 0px;
 }
 
-#signOut{
+#signOut {
 	display: none;
-	text-align: right;
 	vertical-align: top;
 }
-#signOutDiv{
+
+#signOutDiv {
 	text-align: right;
+	height: 33.6px;
 }
 
-.dropdown-toggle{
+.dropdown-toggle {
 	float: left;
 	margin: 0px 0px 0px 10px;
 
 }
-#currentMood{
+
+#currentMood {
 	background-color: #330252;
 }
 
-.col-md-2{
+.col-md-2 {
 	float: left;
 }
 
-.col-lg-6{
-	text-align: center;
+.col-lg-6 {
 	height: 400px;
-	width: 640px;
 }
-#gifDiv{
-	float: left;
+
+#gifDiv {
 	background-color: transparent;
-	margin: 0px 0px 10px 20px;
 }
-#vidDiv{
-	float: right;
+
+#vidDiv {
 	background-color: transparent;
-	margin: 0px 20px 10px 0px;
 }
-.col-lg-12{
+
+.col-lg-12 {
 	text-align: center;
 	clear: both;
 }
@@ -63,26 +64,26 @@
 	
 }
 
-.panel-heading{
+.panel-heading {
 	text-align: center;
-	background-color: #552d81;
-
+	background-color: #8c6aaa;
 }
+
 .panel-body {
 	text-align: center;
 }
+
 #addMoodButton {
 	background-color: #330252;
 }
 
 .row {
-	margin-left:0px; 
-	margin-right:0px;
+	margin-left: 0px; 
+	margin-right: 0px;
+	margin-bottom: 0px;
 }
 
 iframe {
-	width: 640px;
-	height: 390px;
 	width: 100%;
 	height: 100%;
 	padding: 10px;
@@ -113,14 +114,31 @@ th {
 	display: none;
 }
 
+.subtitle {
+	text-align: center;
+	font-size: 12pt
+}
+
 /*modal Code*/
+
 
 .modal-header {
     border-bottom: solid thin;
+    text-align: center;
+    background-color: black; 
+    color: white;
 }
 
 .modal-backdrop {
 	z-index: 1;
+}
+
+.invalid-date {
+	border: solid thick red;
+}
+
+#date-input :focus{
+	border: none;
 }
 
 .modal-title {
@@ -130,13 +148,18 @@ th {
 
 .modal-body {
 	text-align: center;
+	background-color: black; 
 }
 
 #login {
 	margin-top: 20px;
 	width: 200px;
 	height: 50px;
-	background-color: green;
+	background-color: #8c6aaa;
+}
+
+.modal-footer{
+	background-image: url("../images/modal_image.jpg");
 }
 
 /*END modal Code*/
@@ -147,9 +170,16 @@ th {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
 	}
+
 	.alert-danger{
 		float: right;
-	}	
+	}
+
+	.col-lg-6{
+		height: 400px;
+		width: 540px;
+	 }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -158,7 +188,12 @@ th {
 	}
 
 	.alert-danger{
-		float: right;
+		float: left;
+	}
+
+	.col-lg-6 {
+		height: 400px;
+		width: 440px;
 	}
 }
 
@@ -166,7 +201,13 @@ th {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
 	}
+
 	.alert-danger{
-		float: right;
+		float: left;
+	}
+
+	.col-lg-6 {
+		height: 400px;
+		width: 340px;
 	}
 }

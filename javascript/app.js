@@ -71,7 +71,6 @@ $(document).ready(function() {
             giphy(mood);
             displayVideo(mood);      
         } else {
-            // $('.alert-danger').show();
             $('#date-input').addClass('invalid-date');
             $('#date-input').attr('placeholder', 'Invalid Entry - valid format DD/MM/YYYY');
             $('#date-input').val('');
