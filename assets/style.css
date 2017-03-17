@@ -1,6 +1,7 @@
-.main-container{
+.main-container {
 	width: 100%;
 }
+
 .jumbotron {
 	color: #D2D7D3;
 	font-size: 60px;
@@ -9,44 +10,49 @@
 	background-color: #552d81;
 	padding: 20px 0px 20px 0px; 
 }
-#really{
+
+#really {
 	font-size: 85px;
 	text-align: center;
 	padding: 0px 0px 10px 0px;
 }
 
-#signOut{
+#signOut {
 	display: none;
 	vertical-align: top;
 }
-#signOutDiv{
+
+#signOutDiv {
 	text-align: right;
 }
 
-.dropdown-toggle{
+.dropdown-toggle {
 	float: left;
 	margin: 0px 0px 0px 10px;
 
 }
-#currentMood{
+
+#currentMood {
 	background-color: #330252;
 }
 
-.col-md-2{
+.col-md-2 {
 	float: left;
 }
 
-.col-lg-6{
+.col-lg-6 {
 	height: 400px;
 }
 
-#gifDiv{
+#gifDiv {
 	background-color: transparent;
 }
-#vidDiv{
+
+#vidDiv {
 	background-color: transparent;
 }
-.col-lg-12{
+
+.col-lg-12 {
 	text-align: center;
 	clear: both;
 }
@@ -57,22 +63,23 @@
 	
 }
 
-.panel-heading{
+.panel-heading {
 	text-align: center;
 	background-color: #8c6aaa;
-
 }
+
 .panel-body {
 	text-align: center;
 }
+
 #addMoodButton {
 	background-color: #330252;
 }
 
 .row {
-	margin-left:0px; 
-	margin-right:0px;
-	margin-bottom:0px;
+	margin-left: 0px; 
+	margin-right: 0px;
+	margin-bottom: 0px;
 }
 
 iframe {
@@ -125,6 +132,14 @@ th {
 	z-index: 1;
 }
 
+.invalid-date {
+	border: solid thick red;
+}
+
+#date-input :focus{
+	border: none;
+}
+
 .modal-title {
 	font-size: 16pt;
 	font-weight: bold;
@@ -154,13 +169,15 @@ th {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
 	}
+
 	.alert-danger{
 		float: right;
 	}
-.col-lg-6{
-	height: 400px;
-	width: 540px;
- }
+
+	.col-lg-6{
+		height: 400px;
+		width: 540px;
+	 }
 
 }
 
@@ -172,19 +189,24 @@ th {
 	.alert-danger{
 		float: left;
 	}
-.col-lg-6 {
-	height: 400px;
-	width: 440px;
+
+	.col-lg-6 {
+		height: 400px;
+		width: 440px;
+	}
 }
 
 @media screen and (max-width: 640px) {
 	.panel-heading, .panel-body, #vidDiv, #gifDiv { 
 		width: auto;
 	}
+
 	.alert-danger{
 		float: left;
 	}
-.col-lg-6 {
-	height: 400px;
-	width: 340px;
+
+	.col-lg-6 {
+		height: 400px;
+		width: 340px;
+	}
 }
