@@ -32,6 +32,11 @@ $(document).ready(function() {
         firebase.auth().signInWithRedirect(provider);
     });
 
+    $('#date-input').focus(function() {
+        $('#date-input').removeClass('invalid-date');
+        $('#date-input').attr('placeholder', 'Enter Date MM/DD/YYYY');
+    });
+
     $('#signOut').on('click', function(){
         event.preventDefault();
         firebase.auth().signOut().then(function() {
@@ -66,7 +71,9 @@ $(document).ready(function() {
             giphy(mood);
             displayVideo(mood);      
         } else {
-            $('.alert-danger').show();
+            // $('.alert-danger').show();
+            $('#date-input').addClass('invalid-date');
+            $('#date-input').attr('placeholder', 'Invalid Entry - vaild format DD/MM/YYYY');
             $('#date-input').val('');
         }
     });
@@ -77,9 +84,9 @@ $(document).ready(function() {
     $("#happy").click(function(){
         var backGround = "images/newjoy.jpg";
         $(".jumbotron").css("background-color", "#2e5bce");
-        $("#currentMood").css("background-color", "#f8f7be");
-        $("#addMoodButton").css("background-color", "#f8f7be");
-        $(".panel-heading").css("background-color", "#f8f7be");
+        $("#currentMood").css("background-color", "#ffb202");
+        $("#addMoodButton").css("background-color", "#ffb202");
+        $(".panel-heading").css("background-color", "#ffb202");
         $(".main-container").css("background-image", 'url("' + backGround + '")');
 
     });
