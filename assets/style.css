@@ -137,10 +137,6 @@ th {
 	border: solid thick red;
 }
 
-#date-input :focus{
-	border: none;
-}
-
 .modal-title {
 	font-size: 16pt;
 	font-weight: bold;
