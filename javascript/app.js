@@ -73,7 +73,7 @@ $(document).ready(function() {
         } else {
             // $('.alert-danger').show();
             $('#date-input').addClass('invalid-date');
-            $('#date-input').attr('placeholder', 'Invalid Entry - Please enter a valid date DD/MM/YYYY');
+            $('#date-input').attr('placeholder', 'Invalid Entry - vaild format DD/MM/YYYY');
             $('#date-input').val('');
         }
     });

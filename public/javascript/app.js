@@ -32,6 +32,11 @@ $(document).ready(function() {
         firebase.auth().signInWithRedirect(provider);
     });
 
+    $('#date-input').focus(function() {
+        $('#date-input').removeClass('invalid-date');
+        $('#date-input').attr('placeholder', 'Enter Date MM/DD/YYYY');
+    });
+
     $('#signOut').on('click', function(){
         event.preventDefault();
         firebase.auth().signOut().then(function() {
@@ -66,7 +71,9 @@ $(document).ready(function() {
             giphy(mood);
             displayVideo(mood);      
         } else {
-            $('.alert-danger').show();
+            // $('.alert-danger').show();
+            $('#date-input').addClass('invalid-date');
+            $('#date-input').attr('placeholder', 'Invalid Entry - vaild format DD/MM/YYYY');
             $('#date-input').val('');
         }
     });
